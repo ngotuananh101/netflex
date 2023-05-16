@@ -43,52 +43,68 @@ NetFlex is a streaming platform that allows you to watch a variety of movies and
 - [SweetAlert2](https://sweetalert2.github.io/#download)
 
 ### Clone the repository
+Clone the repository using Git Bash or Command Prompt (Windows) or Terminal (Linux)
 ```bash
 git clone https://github.com/pontadevv/netflex.git
 ```
 
 ### Install dependencies
+Install dependencies using Composer and NPM (or Yarn)
 ```bash
 composer install
 npm install
 ```
 
 ### Create .env file
+Copy .env.example file and rename it to .env and update the information with your own
 ```bash
 cp .env.example .env
 ```
 
 ### Generate application key
+Generate application key using the following command
 ```bash
 php artisan key:generate
 ```
 
 ### Create symbolic link
+Link the storage folder to the public folder using the following command
 ```bash
 php artisan storage:link
 ```
 
 ### Create database
+Create a database and add database credentials to .env file and update the following lines
 ```bash
-touch database/database.sqlite
+DB_CONNECTION=mysql
+DB_HOST=database host
+DB_PORT= database port (default 3306)
+DB_DATABASE= database name
+DB_USERNAME= database username
+DB_PASSWORD= database password
 ```
 
+
 ### Migrate database
+Create tables in the database using the following command
 ```bash
 php artisan migrate
 ```
 
 ### Seed database
+Seed default data to the database using the following command
 ```bash
 php artisan db:seed
 ```
 
 ### Compile assets
+Build assets for production using the following command
 ```bash
 npm run build
 ```
 
-### Run the server
+### Run the server (optional)
+Run the server for development using the following command
 ```bash
 php artisan serve
 ```
