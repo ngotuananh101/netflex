@@ -1,0 +1,183 @@
+{
+    "app": {
+        "notifications": "Thông báo"
+    },
+    "landing": {
+        "title": "Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác",
+        "subtitle": "Xem ở mọi nơi. Hủy bất kỳ lúc nào.",
+        "subtitle2": "Bạn đã sẵn sàng xem chưa? Nhập email để tạo hoặc kích hoạt lại tư cách thành viên của bạn.",
+        "button": "Đăng nhập",
+        "button2": "Bắt đầu",
+        "input": "Địa chỉ email",
+        "sections": [
+            {
+                "title": "Thưởng thức trên TV của bạn.",
+                "subtitle": "Xem trên Smart TV, PlayStation, Xbox, Chromecast, Apple TV, đầu phát Blu-ray và nhiều thiết bị khác."
+            },
+            {
+                "title": "Tải xuống nội dung để xem ngoại tuyến",
+                "subtitle": "Lưu lại những nội dung yêu thích một cách dễ dàng và luôn có thứ để xem."
+            },
+            {
+                "title": "Xem ở mọi nơi",
+                "subtitle": "Phát trực tuyến không giới hạn phim và chương trình truyền hình trên điện thoại, máy tính bảng, máy tính xách tay và TV."
+            },
+            {
+                "title": "Tạo hồ sơ cho trẻ em",
+                "subtitle": "Đưa các em vào những cuộc phiêu lưu với nhân vật được yêu thích trong một không gian riêng. Tính năng này đi kèm miễn phí với tư cách thành viên của bạn."
+            }
+        ],
+        "faqs": "Câu hỏi thường gặp",
+        "faqs_data": [
+            {
+                "question": "Netflex là gì?",
+                "answer": "Netflex là dịch vụ phát trực tuyến mang đến đa dạng các loại chương trình truyền hình, phim, anime, phim tài liệu đoạt giải thưởng và nhiều nội dung khác trên hàng nghìn thiết bị có kết nối Internet.\n\nBạn có thể xem bao nhiêu tùy thích, bất cứ lúc nào bạn muốn mà không gặp phải một quảng cáo nào – tất cả chỉ với một mức giá thấp hàng tháng. Luôn có những nội dung mới để bạn khám phá và những chương trình truyền hình, phim mới được bổ sung mỗi tuần!"
+            },
+            {
+                "question": "Tôi phải trả bao nhiêu tiền để xem Netflex?",
+                "answer": "Xem Netflex trên điện thoại thông minh, máy tính bảng, TV thông minh, máy tính xách tay hoặc thiết bị phát trực tuyến, tất cả chỉ với một khoản phí cố định hàng tháng. Kế hoạch giá cả linh hoạt phù hợp với bạn. Không phải khoản phí hoặc hợp đồng phiền toái."
+            },
+            {
+                "question": "Tôi có thể xem ở đâu?",
+                "answer": "Xem mọi lúc, mọi nơi. Đăng nhập bằng tài khoản Netflex của bạn để xem ngay trên trang web netflex.com từ máy tính cá nhân, hoặc trên bất kỳ thiết bị nào có kết nối Internet và có cài đặt ứng dụng Netflex, bao gồm TV thông minh, điện thoại thông minh, máy tính bảng, thiết bị phát đa phương tiện trực tuyến và máy chơi game.\n\nBạn cũng có thể tải xuống các chương trình yêu thích bằng ứng dụng trên iOS, Android hoặc Windows 10. Vào phần nội dung đã tải xuống để xem trong khi di chuyển và khi không có kết nối Internet. Mang Netflex theo bạn đến mọi nơi."
+            },
+            {
+                "question": "Làm thế nào để hủy?",
+                "answer": "Netflex rất linh hoạt. Không có hợp đồng phiền toái hoặc các khoản phí hủy. Bạn có thể hủy tài khoản trực tuyến chỉ trong hai cú nhấp chuột. Không có phí hủy – bạn có thể bắt đầu hoặc ngừng dịch vụ của mình bất cứ khi nào."
+            },
+            {
+                "question": "Tôi có thể xem những gì trên Netflex?",
+                "answer": "Netflex có một thư viện phong phú gồm các chương trình truyền hình, phim, anime, phim tài liệu đoạt giải thưởng và nhiều nội dung khác. Xem không giới hạn bất cứ lúc nào bạn muốn."
+            },
+            {
+                "question": "Netflex có phù hợp cho trẻ em không?",
+                "answer": "Có. Tài khoản gia đình của Netflex cho phép bạn tạo hồ sơ riêng cho trẻ em, với các bộ lọc nội dung phù hợp với độ tuổi. Ngoài ra, bạn có thể thiết lập thời gian xem hợp lý để trẻ em không xem quá nhiều. Tài khoản gia đình giúp trẻ em khám phá thế giới của mình trong một không gian an toàn và phù hợp với độ tuổi của mình."
+            }
+        ],
+        "footers": [
+            {
+                "title": "Bạn có câu hỏi? Liên hệ với chúng tôi.",
+                "link": "https://help.pontas.dev/help-center/tickets/new"
+            },
+            {
+                "title": "Câu hỏi thường gặp",
+                "link": "#"
+            },
+            {
+                "title": "Trung tâm trợ giúp",
+                "link": "#"
+            },
+            {
+                "title": "Tài khoản",
+                "link": "#"
+            },
+            {
+                "title": "Trung tâm đa phương tiện",
+                "link": "#"
+            },
+            {
+                "title": "Quan hệ với nhà đầu tư",
+                "link": "#"
+            },
+            {
+                "title": "Việc làm",
+                "link": "#"
+            },
+            {
+                "title": "Các cách xem",
+                "link": "#"
+            },
+            {
+                "title": "Điều khoản sử dụng",
+                "link": "#"
+            },
+            {
+                "title": "Quyền riêng tư",
+                "link": "#"
+            },
+            {
+                "title": "Tùy chọn cookie",
+                "link": "#"
+            },
+            {
+                "title": "Thông tin doanh nghiệp",
+                "link": "#"
+            },
+            {
+                "title": "Liên hệ với chúng tôi",
+                "link": "#"
+            },
+            {
+                "title": "Kiểm tra tốc độ",
+                "link": "https://fast.com"
+            },
+            {
+                "title": "Thông báo pháp lý",
+                "link": "#"
+            },
+            {
+                "title": "Chỉ có trên Netflex",
+                "link": "#"
+            }
+        ]
+    },
+    "auth": {
+        "login": {
+            "title": "Đăng nhập",
+            "email": "Địa chỉ email",
+            "email_invalid": "Địa chỉ email không hợp lệ.",
+            "password": "Mật khẩu",
+            "password_invalid": "Mật khẩu cần từ 8 đến 60 ký tự bao gồm ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.",
+            "remember_me": "Ghi nhớ tôi",
+            "need_help": "Bạn cần trợ giúp?",
+            "new_to_netflex": "Bạn mới tham gia Netflex?",
+            "sign_up_now": "Đăng ký ngay.",
+            "protected" : "Trang này được Google reCAPTCHA bảo vệ để đảm bảo bạn không phải là robot.",
+            "protected_link": "Tìm hiểu thêm."
+        },
+        "signup": {
+            "login": "Đăng nhập",
+            "next" : "Tiếp theo",
+            "back" : "Quay lại",
+            "step" : "Bước",
+            "loading" : "Đang tải...",
+            "steps" : [
+                {
+                    "title" : "Chào mừng trở lại!",
+                    "title2" : "Tham gia Netflex thật dễ dàng.",
+                    "subtitle" : "Nhập mật khẩu của bạn và bạn sẽ được xem ngay lập tức."
+                },
+                {
+                    "title" : "Chọn gói của bạn.",
+                    "options" : [
+                        "Không có cam kết, hủy bỏ bất cứ lúc nào.",
+                        "Mọi thứ trên Netflex với một mức giá thấp.",
+                        "Không có quảng cáo và không có phí bổ sung."
+                    ]
+
+                },
+                {
+                    "title" : "Chọn gói phù hợp với bạn.",
+                    "options" : [
+                        "Xem tất cả những gì bạn muốn. Không có quảng cáo.",
+                        "Đề xuất chỉ dành cho bạn.",
+                        "Thay đổi hoặc hủy kế hoạch của bạn bất cứ lúc nào."
+                    ],
+                    "subtitle" : "Tính khả dụng của HD (720p), Full HD (1080p), Ultra HD (4K) và HDR tùy thuộc vào khả năng của thiết bị và dịch vụ internet của bạn. Không phải tất cả nội dung đều có sẵn ở tất cả các độ phân giải. Xem Điều khoản sử dụng của chúng tôi để biết thêm chi tiết.",
+                    "subtitle2" : "Chỉ những người sống cùng bạn mới có thể sử dụng tài khoản của bạn. Xem trên 4 thiết bị khác nhau cùng lúc với Premium, 2 với Standard và 1 với Basic"
+                },
+                {
+                    "title" : "Chọn cách thanh toán.",
+                    "subtitle" : "Thanh toán của bạn được mã hóa và bạn có thể thay đổi cách thanh toán của mình bất kỳ lúc nào.",
+                    "receiver" : "Người nhận",
+                    "phone_number" : "Số điện thoại",
+                    "amount" : "Số tiền",
+                    "content" : "Nội dung"
+                }
+            ],
+            "wait" : "Vui lòng đợi trong giây lát...",
+            "error" : "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+            "success" : "Đăng ký thành công!"
+        }
+    }
+}

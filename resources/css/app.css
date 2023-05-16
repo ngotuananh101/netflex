@@ -1,0 +1,16 @@
+.btn-danger{
+    background: #e50914 !important;
+}
+
+html {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #cc0000;
+}
+
+:root{
+    --nf-default-color : #e50914;
+}
