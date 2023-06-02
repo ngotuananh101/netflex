@@ -3,7 +3,7 @@
         <argon-snackbar
             v-for="(notification, index) in notifications"
             :title="this.$t('app.notifications')"
-            date="now"
+            date=""
             class="notification"
             :data-i="index"
             :description="notification.message"
@@ -21,6 +21,9 @@ import ArgonSnackbar from "./components/ArgonSnackbar.vue";
 
 export default {
     name: "App",
+    title() {
+        return this.$t('app.title');
+    },
     data() {
         return {
             language: 'en',

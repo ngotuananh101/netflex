@@ -2,6 +2,7 @@ export default [
     {
         path: '/auth',
         redirect: {name: 'login'},
+        meta: {isGuest: true},
         children: [
             {
                 path: 'login',
@@ -17,6 +18,19 @@ export default [
                 path: 'verify/:id/:hash',
                 name: 'verify',
                 component: () => import('../../pages/auth/Verify.vue'),
+                meta: {
+                    requiresAuth: true,
+                    isGuest: false,
+                },
+            },
+            {
+                path: 'sent',
+                name: 'sent',
+                component: () => import('../../pages/auth/Sent.vue'),
+                meta: {
+                    requiresAuth: true,
+                    isGuest: false,
+                },
             }
         ]
     }

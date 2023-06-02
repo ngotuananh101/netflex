@@ -12,21 +12,16 @@
                 <div class="container min-vh-75">
                     <div class="row justify-content-center align-items-center min-vh-75">
                         <div class="col-md-8 col-12 text-center">
-                            <p class="fw-bold text-white fs-3 mb-0">Email Verification</p>
-                            <p class="text-white fs-6 mb-0">
-                                A verification email has been sent to your email address.
-                            </p>
-                            <p class="text-white fs-6 mb-0">
-                                Please check your inbox and click on the link in the email to verify your email address.
-                            </p>
-                            <p class="text-warning fs-6 mb-0">
-                                If you have not received any email after 5 minutes, please click the button below to resend the verification email or check your spam folder. If you still have not received any email, please contact us at <a href="mailto:ngotuananh2101@gmail.com" class="text-info">ngotuananh2101@gmail.com</a>.
-                            </p>
+                            <h3 class="fw-bold text-white fs-3">{{ $t('auth.sent.title') }}</h3>
+                            <p class="text-white fs-6" v-html="$t('auth.sent.subtitle', { email: this.email })"></p>
+                            <p class="text-white fs-6 mb-0" v-html="$t('auth.sent.contact', { email: 'ngotuananh2101@gmail.com' })"></p>
                             <argon-button color="danger" size="sm"
                                           class="mt-4 py-3 fs-5 text-white btnRegister"
-                                          style="border-radius: 2px;" @click="register">
-                                {{ isRegister ? this.$t('auth.signup.loading') : this.$t('auth.signup.next') }}
+                                          :class="sending ? 'disabled' : ''"
+                                          style="border-radius: 2px;" @click="resend">
+                                {{ sending ? this.$t('auth.sent.wait') : this.$t('auth.sent.resend') }}
                             </argon-button>
+                            <p class="text-white fs-6 mb-0" v-if="counter != null" v-html="$t('auth.sent.count', { time: count })"></p>
                         </div>
                     </div>
                 </div>
@@ -62,14 +57,24 @@
 <script>
 import Navbar from "../../components/navbars/SignUp.vue";
 import ArgonButton from "../../components/ArgonButton.vue";
+import store from "../../stores";
 
 export default {
     name: "Resend Email",
     components: {Navbar, ArgonButton},
+    title(){
+        return this.$t('auth.sent.title');
+    },
     data() {
         return {
             language: 'en',
             footer: [1, 2, 8, 9, 10, 11],
+            email: store.state.auth.user.email,
+            sending: false,
+            counter: null,
+            count: 30,
+            interval: null,
+            unsubscribe: null,
         };
     },
     created() {
@@ -77,16 +82,28 @@ export default {
         this.unsubscribe = this.$store.subscribe((mutation, state) => {
             switch (mutation.type) {
                 case 'auth/request':
-                    this.isRegister = true;
-                    this.$root.showSnackbar('warning', this.$t('auth.signup.wait'));
+                    this.sending = true;
+                    this.$root.showSnackbar('warning', this.$t('auth.sent.wait'));
                     break;
-                case 'auth/registerSuccess':
-                    this.$root.showSnackbar('success', this.$t('auth.signup.success'));
-                    this.$router.push({name: 'login'});
+                case 'auth/resendSuccess':
+                    this.counter ? clearTimeout(this.counter) : null;
+                    this.counter = setTimeout(() => {
+                        this.sending = false;
+                        this.counter = null;
+                        this.count = 30;
+                    }, 30000);
+                    this.interval = setInterval(() => {
+                        this.count--;
+                        if (this.count <= 0) {
+                            clearInterval(this.interval);
+                            this.count = 30;
+                        }
+                    }, 1000);
+                    this.$root.showSnackbar('success', this.$t('auth.sent.success'));
                     break;
                 case 'auth/error':
-                    this.isRegister = false;
-                    this.$root.showSnackbar('danger', this.$t('auth.signup.error'));
+                    this.sending = false;
+                    this.$root.showSnackbar('danger', this.$t('auth.sent.error'));
                     break;
             }
         });
@@ -98,6 +115,9 @@ export default {
         changeLanguage(e) {
             this.$root.changeLanguage(e.target.value);
         },
+        resend(){
+            this.$store.dispatch('auth/resend', this.email);
+        }
     },
 }
 </script>

@@ -1,3 +1,5 @@
+@import url('./FontAwesome/css/all.min.css');
+
 .btn-danger{
     background: #e50914 !important;
 }
@@ -14,3 +16,5 @@ html {
 :root{
     --nf-default-color : #e50914;
 }
+
+

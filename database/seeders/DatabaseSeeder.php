@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Plan;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -20,6 +21,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $this->seedPermissionsAndRoles();
+        $this->seedPlans();
     }
 
     /**
@@ -34,8 +38,10 @@ class DatabaseSeeder extends Seeder
          */
         // super admin permissions
         Permission::create(['name' => 'admin']);
-        // admin permissions
+
+        // permission to access admin panel
         Permission::create(['name' => 'admin.access']);
+
         // common
         Permission::create(['name' => 'roles.view']);
         Permission::create(['name' => 'roles.create']);
@@ -95,5 +101,62 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'videos.create']);
         Permission::create(['name' => 'videos.update']);
         Permission::create(['name' => 'videos.delete']);
+
+        // Seed roles
+        $superAdminRole = Role::create(['name' => 'super-admin']);
+        $superAdminRole->givePermissionTo(Permission::where('name', 'admin')->get());
+
+        $adminRole = Role::create(['name' => 'admin']);
+        $adminRole->givePermissionTo(Permission::where('name', 'admin.access')->get());
+    }
+
+    /**
+     * Seed the plan.
+     */
+    public function seedPlans(): void
+    {
+        // Seed plans
+        $plans = [
+            [
+                'name' => 'Free',
+                'price' => 0,
+                'interval' => 'month',
+                'interval_count' => 1,
+                'sort_order' => 1,
+                'currency' => 'USD',
+                'description' => 'Free plan',
+                'is_active' => 1,
+                'is_recurring' => 1,
+                'is_featured' => 0,
+                'is_trial_plan' => 0,
+                'trial_interval' => 'month',
+                'trial_interval_count' => 1,
+                'trial_period_days' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Premium',
+                'price' => 9.99,
+                'interval' => 'month',
+                'interval_count' => 1,
+                'sort_order' => 2,
+                'currency' => 'USD',
+                'description' => 'Premium plan',
+                'is_active' => 1,
+                'is_recurring' => 1,
+                'is_featured' => 1,
+                'is_trial_plan' => 0,
+                'trial_interval' => 'month',
+                'trial_interval_count' => 1,
+                'trial_period_days' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ];
+
+        foreach ($plans as $plan) {
+            Plan::create($plan);
+        }
     }
 }

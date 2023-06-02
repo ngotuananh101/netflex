@@ -56,7 +56,7 @@
                                             </argon-button>
                                         </div>
                                         <div class="mt-2 d-flex justify-content-between">
-                                            <argon-checkbox id="remember" name="remember_me">
+                                            <argon-checkbox id="remember" name="remember_me" v-model="remember_me">
                                                 {{ $t('auth.login.remember_me') }}
                                             </argon-checkbox>
                                             <a href="#" style="font-size: 0.8rem; color: #b3b3b3;">{{
@@ -67,7 +67,7 @@
                                     <div class="text-start" style="margin-top: 5rem;">
                                         <p class="text-white mb-2">
                                             <span class="opacity-7 me-2">{{ $t('auth.login.new_to_netflex') }}</span>
-                                            <router-link :to="{name: 'login'}" class="text-white">
+                                            <router-link :to="{name: 'signup'}" class="text-white">
                                                 {{ $t('auth.login.sign_up_now') }}
                                             </router-link>
                                         </p>
@@ -121,7 +121,6 @@
 import ArgonButton from "../../components/ArgonButton.vue";
 import ArgonCheckbox from "../../components/ArgonCheckbox.vue";
 import Navbar from "../../components/navbars/LogIn.vue";
-import {mapMutations} from "vuex";
 
 export default {
     name: "Login",
@@ -130,38 +129,51 @@ export default {
         ArgonButton,
         ArgonCheckbox,
     },
+    title() {
+        return this.$t('auth.login.title');
+    },
     data() {
         return {
-            email: '',
-            password: '',
+            email: 'ngotuananh2101@gmail.com',
+            password: 'TuanAnh2101@',
+            remember_me: false,
             footer: [1, 2, 8, 9, 10, 11],
             language: 'en',
         }
     },
     created() {
-        this.$store.state.hideConfigButton = true;
-        this.toggleDefaultLayout();
         this.language = this.$root.language;
-    },
-    beforeUnmount() {
-        this.$store.state.hideConfigButton = false;
-        this.toggleDefaultLayout();
+        this.unsubscribe = this.$store.subscribe((mutation, state) => {
+            let payload = mutation.payload;
+            switch (mutation.type) {
+                case 'auth/request':
+                    this.status = 'logging';
+                    break;
+                case 'auth/loginSuccess':
+                    this.status = 'success';
+
+                    break;
+                case 'auth/error':
+                    this.status = 'error';
+                    let code = payload.response.data.message;
+                    this.$root.showSnackbar('danger', (code > 10) ? this.$t('error.' + code) : code);
+                    break;
+            }
+        });
     },
     methods: {
         login(e) {
             let form = e.target;
             if (form.checkValidity()) {
+                e.preventDefault();
                 let formData = new FormData(form);
-                console.log(formData.get('email'));
+                this.$store.dispatch('auth/login', formData);
             }
             form.classList.add('was-validated');
         },
         changeLanguage(e) {
             this.$root.changeLanguage(e.target.value);
         },
-        ...mapMutations({
-            toggleDefaultLayout: "config/toggleDefaultLayout",
-        }),
     },
 }
 </script>

@@ -219,6 +219,9 @@ import Navbar from "../../components/navbars/SignUp.vue";
 export default {
     name: "Register",
     components: {Navbar, ArgonButton, ArgonCheckbox, ArgonAlert, PricingCard},
+    title() {
+        return this.$t('auth.signup.title');
+    },
     data() {
         return {
             language: 'en',
@@ -227,8 +230,8 @@ export default {
             prices: [0, 50000, 100000],
             step: 4,
             activeStep: 1,
-            email: this.$route.query.email || '',
-            password: "",
+            email: this.$route.query.email || 'ngotuananh2101@gmail.com',
+            password: "TuanAnh2101@",
             plan_index: 0,
             transfer_code: "",
             unsubscribe: null,
@@ -240,7 +243,7 @@ export default {
         this.language = this.$root.language;
         this.transfer_code = this.code;
         this.btnRegister = document.querySelector('.btnRegister');
-        this.unsubscribe = this.$store.subscribe((mutation, state) => {
+        this.unsubscribe = this.$store.subscribe((mutation) => {
             switch (mutation.type) {
                 case 'auth/request':
                     this.isRegister = true;
@@ -248,11 +251,11 @@ export default {
                     break;
                 case 'auth/registerSuccess':
                     this.$root.showSnackbar('success', this.$t('auth.signup.success'));
-                    this.$router.push({name: 'login'});
+                    this.$router.push({name: 'sent'});
                     break;
                 case 'auth/error':
                     this.isRegister = false;
-                    this.$root.showSnackbar('danger', this.$t('auth.signup.error'));
+                    this.$root.showSnackbar('danger', mutation.payload.response.data.message);
                     break;
             }
         });
@@ -370,11 +373,6 @@ export default {
 }
 
 .price.active {
-    background-color: var(--nf-default-color);
-    color: white !important;
-}
-
-.price.active .badge {
     background-color: var(--nf-default-color);
     color: white !important;
 }

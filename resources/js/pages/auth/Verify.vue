@@ -11,13 +11,22 @@
             <div class="min-vh-75">
                 <div class="container min-vh-75">
                     <div class="row justify-content-center align-items-center min-vh-75">
-                        <div class="col-md-5 col-12 text-center">
-                            <p class="fw-bold text-white fs-3 mb-0">{{ this.$t('auth.signup.steps.0.title') }}</p>
-                            <p class="fw-bold text-white fs-3 mb-0">{{ this.$t('auth.signup.steps.0.title2') }}</p>
-                            <div class="row">
-                                <div class="col-12">
-                                    <p class="text-white fs-6 mb-0">{{ this.$t('auth.signup.steps.0.subtitle') }}</p>
+                        <div class="col-md-7 col-12 text-center">
+                            <p class="fw-bold text-white fs-3">{{ this.$t('auth.verify.verify') }}</p>
+                            <div v-if="status === 'loading'">
+                                <div class="spinner-border text-danger my-4 fs-4 p-3" role="status">
+                                    <span class="sr-only"></span>
                                 </div>
+                                <p class="text-warning fs-6 mb-0 mt-2">{{ this.$t('auth.verify.wait') }}</p>
+                            </div>
+                            <div v-if="status === 'success'" class="mt-2 fs-4 p-3">
+                                <i class="fa-light fa-circle-check text-success fs-1"></i>
+                                <p class="text-success fs-6 mb-0 my-2">{{ this.$t('auth.verify.success') }}</p>
+                                <p class="mb-0 text-white" v-html="this.$t('auth.verify.redirect', {time: this.time})"></p>
+                            </div>
+                            <div v-if="status === 'error'" class="mt-2 fs-4 p-3">
+                                <i class="fa-light fa-circle-xmark text-danger fs-1"></i>
+                                <p class="text-danger fs-6 mb-0 my-2" v-html="this.$t('auth.verify.error', { email:'ngotuananh2101@gmail.com' })"></p>
                             </div>
                         </div>
                     </div>
@@ -61,6 +70,10 @@ export default {
         return {
             language: 'en',
             footer: [1, 2, 8, 9, 10, 11],
+            status: "loading",
+            time: 5,
+            counter: null,
+            unsubscribe: null,
         };
     },
     created() {
@@ -68,19 +81,29 @@ export default {
         this.unsubscribe = this.$store.subscribe((mutation, state) => {
             switch (mutation.type) {
                 case 'auth/request':
-                    this.isRegister = true;
-                    this.$root.showSnackbar('warning', this.$t('auth.signup.wait'));
+                    this.status = 'loading';
                     break;
-                case 'auth/registerSuccess':
+                case 'auth/verifySuccess':
+                    this.status = 'success';
+                    this.counter ? clearInterval(this.counter) : null;
+                    this.counter = setInterval(() => {
+                        this.time--;
+                        if (this.time === 0) {
+                            clearInterval(this.counter);
+                            this.$router.push({name: 'home'});
+                        }
+                    }, 1000);
                     this.$root.showSnackbar('success', this.$t('auth.signup.success'));
-                    this.$router.push({name: 'login'});
                     break;
                 case 'auth/error':
-                    this.isRegister = false;
-                    this.$root.showSnackbar('danger', this.$t('auth.signup.error'));
+                    this.status = 'error';
+                    let payload = mutation.payload;
+                    let code = payload.response.data.message;
+                    this.$root.showSnackbar('danger', (code > 10) ? this.$t('error.' + code) : code);
                     break;
             }
         });
+        this.verify();
     },
     beforeUnmount() {
         this.unsubscribe();
@@ -89,6 +112,13 @@ export default {
         changeLanguage(e) {
             this.$root.changeLanguage(e.target.value);
         },
+        verify(){
+            let id = this.$route.params.id;
+            let hash = this.$route.params.hash;
+            let expires = this.$route.query.expires;
+            let signature = this.$route.query.signature;
+            this.$store.dispatch('auth/verify', {id, hash, expires, signature});
+        }
     },
 }
 </script>
@@ -101,9 +131,5 @@ export default {
 #choices-language {
     background-color: #000;
     color: #fff;
-}
-
-.form-control {
-    border-radius: 2px;
 }
 </style>

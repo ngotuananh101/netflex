@@ -1,6 +1,10 @@
 {
     "app": {
-        "notifications": "Notifications"
+        "notifications": "Notifications",
+        "name" : "Netflex",
+        "title" : "Watch TV shows & movies anytime, anywhere."
+    },
+    "error" : {
     },
     "landing": {
         "title": "Unlimited movies, TV shows, and more",
@@ -109,7 +113,7 @@
             },
             {
                 "title": "Speed Test",
-                "link": "https://fast.com"
+                "link": "https://ponta.fireprobe.net"
             },
             {
                 "title": "Legal Notices",
@@ -136,6 +140,7 @@
             "protected_link": "Learn more."
         },
         "signup": {
+            "title": "Sign Up",
             "login": "Sign In",
             "next" : "Next",
             "back" : "Back",
@@ -176,8 +181,24 @@
                 }
             ],
             "wait" : "Please wait...",
-            "error" : "Something went wrong. Please try again.",
             "success" : "Your account has been created successfully."
+        },
+        "sent" : {
+            "title" : "Verify your email address",
+            "subtitle" : "We've sent an email to <a href='mailto:{{email}}' class='text-success'>{{email}}</a>. Click the link in the email to verify your email address. If you don't see it, check your junk and spam folders.",
+            "contact" : "If you don't receive the email in 10 minutes, please contact us at <a href='mailto:{{email}}' class='text-success'>{{email}}</a>.",
+            "resend" : "Resend email",
+            "wait" : "Please wait...",
+            "success" : "Email has been sent successfully.",
+            "count" : "You can resend email in <span class='fs-5 text-danger'>{{time}}</span> seconds."
+        },
+        "verify" : {
+            "verify": "Verify Email Address",
+            "wait" : "Please wait a few minute while us verify your email",
+            "success" : "Your email has been verified successfully. You can now use your account.",
+            "error" : "Something went wrong. Please try again. If you still have problem, please contact us at <a href='mailto:{{email}}' class='text-success'>{{email}}</a>.",
+            "redirect" : "Redirecting to home page in <span class='fs-5 text-danger'>{{time}}</span> seconds.",
+            "login" : "Login"
         }
     }
 }

@@ -3,20 +3,23 @@
 <p align="center">
 <a href="#"><img src="https://img.shields.io/badge/license-MIT%2FApache--2.0-brightgreen" alt="license"></a>
 <a href="#"><img src="https://img.shields.io/badge/Laravel-10-orange?logo=laravel&logoColor=orange" alt="Laravel"></a>
-<a href="#"><img src="https://img.shields.io/badge/VueJS-3-brightgreen?logo=vuedotjs&logoColor=brightgreen" alt="Vue.Js"></a>
+<a href="#"><img src="https://img.shields.io/badge/Vue.JS-3-brightgreen?logo=vuedotjs&logoColor=brightgreen" alt="Vue.Js"></a>
 <a href="#"><img src="https://img.shields.io/badge/PHP-8.1-blue?logo=php&logoColor=blue" alt="PHP"></a>
 </p>
 
 ## About NetFlex
 
-NetFlex is a streaming platform that allows you to watch a variety of movies and series, as well as create your own content. It is a project developed by [Pontas Agency](https://pontas.dev) for the purpose of learning and improving skills in the development of web applications.
+NetFlex is a streaming platform that allows you to watch a variety of movies and series, as well as create your own content. It is a project developed by [Ponta](https://pontas.dev) for the purpose of learning and improving skills in the development of web applications.
 
 ## Features
 - Landing Page
+- Change Language (English, Vietnamese)
 #### Authentication
 - Register
-- Verify Email
-- Login
+- Send email verification
+- Resend email verification
+- Verify email
+### ...
 
 
 ## Installation
@@ -115,7 +118,7 @@ NetFlex is open-sourced software licensed under the [MIT license](https://openso
 
 ## Credits
 
-- [Pontas Agency](https://pontas.dev)
+- [Ponta](https://pontas.dev)
 - [Laravel](https://laravel.com)
 - [VueJS](https://vuejs.org)
 - [Bootstrap](https://getbootstrap.com)

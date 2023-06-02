@@ -4,9 +4,6 @@
             <router-link :to="{name: 'landing'}" class="navbar-brand">
                 <img src="../../assets/img/logos/logo.png" alt="logo" class="img-fluid" style="height: 3rem;"/>
             </router-link>
-            <router-link :to="{name: 'login'}" class="fs-5 fw-bold text-white">
-                {{ $t('auth.signup.login') }}
-            </router-link>
         </div>
     </nav>
 </template>

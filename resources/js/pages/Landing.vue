@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-6 col-12">
                     <video
-                        src="../../assets/videos/landing/v1.mp4"
+                        src="../assets/videos/landing/v1.mp4"
                         autoplay
                         loop
                         muted
@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-md-6 col-12">
                     <video
-                        src="../../assets/videos/landing/v2.mp4"
+                        src="../assets/videos/landing/v2.mp4"
                         autoplay
                         loop
                         muted
@@ -97,7 +97,7 @@
                 </div>
                 <div class="col-md-6 col-12">
                     <video
-                        src="../../assets/videos/landing/v3.mp4"
+                        src="../assets/videos/landing/v3.mp4"
                         autoplay
                         loop
                         muted
@@ -118,7 +118,7 @@
                 </div>
                 <div class="col-md-6 col-12">
                     <img
-                        src="../../assets/videos/landing/v4.png"
+                        src="../assets/videos/landing/v4.png"
                         alt="v4"
                         class="img-fluid"
                     />
@@ -188,9 +188,9 @@
 </template>
 
 <script>
-import Navbar from "../../components/navbars/Landing.vue";
-import ArgonInput from "../../components/ArgonInput.vue";
-import ArgonButton from "../../components/ArgonButton.vue";
+import Navbar from "../components/navbars/Landing.vue";
+import ArgonInput from "../components/ArgonInput.vue";
+import ArgonButton from "../components/ArgonButton.vue";
 import {mapMutations} from "vuex";
 
 export default {
@@ -199,6 +199,9 @@ export default {
         Navbar,
         ArgonInput,
         ArgonButton,
+    },
+    title() {
+        return this.$t('app.title');
     },
     data() {
         return {
@@ -227,7 +230,7 @@ export default {
 </script>
 <style scoped>
 .page-header {
-    background-image: url("../../assets/img/background.jpg");
+    background-image: url("../assets/img/background.jpg");
 }
 
 .mask {

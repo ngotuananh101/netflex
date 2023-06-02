@@ -2,6 +2,6 @@ export default [
     {
         path: '/',
         name: 'landing',
-        component: () => import('../../pages/landing/Index.vue'),
-    },
+        component: () => import('../../pages/Landing.vue'),
+    }
 ]

@@ -1,6 +1,10 @@
 {
     "app": {
-        "notifications": "Thông báo"
+        "notifications": "Thông báo",
+        "name" : "Netflex",
+        "title" : "Xem phim, chương trình truyền hình, phim tài liệu đoạt giải thưởng và nhiều nội dung khác."
+    },
+    "error" : {
     },
     "landing": {
         "title": "Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác",
@@ -109,7 +113,7 @@
             },
             {
                 "title": "Kiểm tra tốc độ",
-                "link": "https://fast.com"
+                "link": "https://ponta.fireprobe.net"
             },
             {
                 "title": "Thông báo pháp lý",
@@ -136,6 +140,7 @@
             "protected_link": "Tìm hiểu thêm."
         },
         "signup": {
+            "title": "Đăng ký",
             "login": "Đăng nhập",
             "next" : "Tiếp theo",
             "back" : "Quay lại",
@@ -178,6 +183,24 @@
             "wait" : "Vui lòng đợi trong giây lát...",
             "error" : "Đã xảy ra lỗi. Vui lòng thử lại sau.",
             "success" : "Đăng ký thành công!"
+        },
+        "sent" : {
+            "title" : "Xác thực địa chỉ email",
+            "subtitle" : "Chúng tôi đã gửi một email xác thực đến <a href='mailto:{{email}}' class='text-success'>{{email}}</a>. Vui lòng kiểm tra hộp thư đến hoặc thư rác của bạn. Nếu bạn không nhận được email, hãy nhấp vào nút bên dưới để gửi lại email.",
+            "contact" : "Nếu bạn vẫn không nhận được email sau 10 phút, hãy liên hệ với chúng tôi qua email <a href='mailto:{{email}}' class='text-success'>{{email}}<a> để được hỗ trợ.",
+            "resend" : "Gửi lại email",
+            "wait" : "Vui lòng đợi trong giây lát...",
+            "success" : "Gửi lại thành công!",
+            "error" : "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+            "count": "Bạn có thể gửi lại email sau <span class='fs-5 text-danger'>{{time}}</span> giây."
+        },
+        "verify" : {
+            "verify": "Xác thực địa chỉ email",
+            "wait": "Vui lòng đợi một chút trong khi chúng tôi kiểm tra email của bạn",
+            "success" : "Xác thực thành công! Bạn có thể sử dụng ứng dụng ngay bây giờ.",
+            "error" : "Đã xảy ra lỗi. Vui lòng thử lại sau. Nếu lỗi vẫn tiếp diễn, hãy liên hệ với chúng tôi qua email <a href='mailto:{{email}}' class='text-success'>{{email}}<a> để được hỗ trợ.",
+            "redirect" : "Bạn sẽ được chuyển hướng sang trang chủ sau <span class='fs-5 text-danger'>{{time}}</span> giây.",
+            "login" : "Đăng nhập"
         }
     }
 }

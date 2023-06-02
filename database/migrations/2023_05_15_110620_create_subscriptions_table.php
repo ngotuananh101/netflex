@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->foreignId('subscription_plan_id')
+            $table->foreignId('plan_id')
                 ->constrained()
                 ->cascadeOnDelete();
             $table->timestamp('ends_at')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('inactive');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
