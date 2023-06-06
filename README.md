@@ -1,6 +1,6 @@
-<p align="center"><a href="https://pontas.dev" target="_blank"><img src="https://i.ibb.co/ssD0wwG/logo.png" width="400" alt="NetFlex Logo"></a></p>
+<p><a href="https://pontas.dev" target="_blank"><img src="https://i.ibb.co/ssD0wwG/logo.png" width="400" alt="NetFlex Logo"></a></p>
 
-<p align="center">
+<p>
 <a href="#"><img src="https://img.shields.io/badge/license-MIT%2FApache--2.0-brightgreen" alt="license"></a>
 <a href="#"><img src="https://img.shields.io/badge/Laravel-10-orange?logo=laravel&logoColor=orange" alt="Laravel"></a>
 <a href="#"><img src="https://img.shields.io/badge/Vue.JS-3-brightgreen?logo=vuedotjs&logoColor=brightgreen" alt="Vue.Js"></a>
@@ -101,13 +101,17 @@ Seed default data to the database using the following command
 php artisan db:seed
 ```
 
-### Compile assets
+### Compile assets (for production) or dev (for development)
 Build assets for production using the following command
 ```bash
 npm run build
 ```
+or watch for development using the following command
+```bash
+npm run dev
+```
 
-### Run the server (optional)
+### Run the server (optional for development) 
 Run the server for development using the following command
 ```bash
 php artisan serve
