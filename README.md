@@ -19,6 +19,7 @@ NetFlex is a streaming platform that allows you to watch a variety of movies and
 - Send email verification
 - Resend email verification
 - Verify email
+- Login
 ### ...
 
 

@@ -144,22 +144,23 @@ export default {
     created() {
         this.language = this.$root.language;
         this.unsubscribe = this.$store.subscribe((mutation, state) => {
-            let payload = mutation.payload;
             switch (mutation.type) {
                 case 'auth/request':
                     this.status = 'logging';
                     break;
                 case 'auth/loginSuccess':
                     this.status = 'success';
-
+                    location.href = '/home';
                     break;
                 case 'auth/error':
                     this.status = 'error';
-                    let code = payload.response.data.message;
-                    this.$root.showSnackbar('danger', (code > 10) ? this.$t('error.' + code) : code);
+                    this.$root.showSnackbar('danger', mutation.payload.response.data.message);
                     break;
             }
         });
+    },
+    beforeUnmount() {
+        this.unsubscribe();
     },
     methods: {
         login(e) {

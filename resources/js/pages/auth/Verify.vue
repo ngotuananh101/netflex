@@ -12,7 +12,7 @@
                 <div class="container min-vh-75">
                     <div class="row justify-content-center align-items-center min-vh-75">
                         <div class="col-md-7 col-12 text-center">
-                            <p class="fw-bold text-white fs-3">{{ this.$t('auth.verify.verify') }}</p>
+                            <p class="fw-bold text-white fs-3">{{ this.$t('auth.verify.title') }}</p>
                             <div v-if="status === 'loading'">
                                 <div class="spinner-border text-danger my-4 fs-4 p-3" role="status">
                                     <span class="sr-only"></span>
@@ -66,6 +66,9 @@ import Navbar from "../../components/navbars/SignUp.vue";
 export default {
     name: "Verify Email Page",
     components: {Navbar},
+    title() {
+        return this.$t('auth.verify.title');
+    },
     data() {
         return {
             language: 'en',

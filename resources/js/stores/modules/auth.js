@@ -24,7 +24,6 @@ export default {
         },
         registerSuccess(state,user_data) {
             state.status = "success";
-            state.status = "success";
             state.user = user_data.user;
             state.access_token = user_data.access_token;
             localStorage.setItem("user", JSON.stringify(user_data.user));
@@ -44,6 +43,13 @@ export default {
             state.access_token = user_data.access_token;
             localStorage.setItem("user", JSON.stringify(user_data.user));
             Cookies.set("access_token", user_data.access_token, { expires: 1 });
+        },
+        removeData(state) {
+            state.status = null;
+            state.user = null;
+            state.access_token = null;
+            localStorage.removeItem("user");
+            Cookies.remove("access_token");
         },
         error(state, error = null) {
             state.status = "error";
@@ -65,7 +71,7 @@ export default {
                 await authService.resend(email);
                 commit("resendSuccess");
             } catch (error) {
-                commit("error");
+                commit("error", error);
             }
         },
         async verify({commit}, {id, hash, expires, signature}){
@@ -82,6 +88,15 @@ export default {
             try {
                 let response = await authService.login(data);
                 commit("loginSuccess", response.data);
+            } catch (error) {
+                commit("error", error);
+            }
+        },
+        async logout({ commit }) {
+            commit("request");
+            try {
+                await authService.logout();
+                commit("error");
             } catch (error) {
                 commit("error", error);
             }

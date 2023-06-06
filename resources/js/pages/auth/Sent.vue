@@ -80,6 +80,7 @@ export default {
     created() {
         this.language = this.$root.language;
         this.unsubscribe = this.$store.subscribe((mutation, state) => {
+            let payload = mutation.payload;
             switch (mutation.type) {
                 case 'auth/request':
                     this.sending = true;
@@ -103,7 +104,7 @@ export default {
                     break;
                 case 'auth/error':
                     this.sending = false;
-                    this.$root.showSnackbar('danger', this.$t('auth.sent.error'));
+                    this.$root.showSnackbar('danger', payload.response.data.message);
                     break;
             }
         });

@@ -134,13 +134,29 @@ class AuthController extends Controller
                 throw new \Exception('auth3');
             } else{
                 $user = User::where('email', $request->input('email'))->first();
-                if (! $user->hasVerifiedEmail()) {
-                    throw new \Exception('auth4');
-                }
             }
             return response()->json([
                 'user' => $user,
                 'access_token' => $user->createToken('accessToken')->plainTextToken,
+            ], 200);
+        } catch (\Exception $ex){
+            return response()->json([
+                'message' => $ex->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Logout user
+     * @param Request $request
+     * @return JsonResponse
+     */
+    function logout(Request $request): JsonResponse
+    {
+        try {
+            $request->user()->currentAccessToken()->delete();
+            return response()->json([
+                'message' => 'User logged out successfully',
             ], 200);
         } catch (\Exception $ex){
             return response()->json([

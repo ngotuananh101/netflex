@@ -31,6 +31,15 @@ export default [
                     requiresAuth: true,
                     isGuest: false,
                 },
+            },
+            {
+                path: 'logout',
+                name: 'logout',
+                component: () => import('../../pages/auth/Logout.vue'),
+                meta: {
+                    requiresAuth: true,
+                    isGuest: false,
+                }
             }
         ]
     }

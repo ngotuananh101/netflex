@@ -4,7 +4,8 @@ export default {
     register,
     resend,
     verify,
-    login
+    login,
+    logout
 }
 
 async function register(data) {
@@ -34,6 +35,14 @@ async function verify(id, hash, expires, signature) {
 async function login(data) {
     try {
         return await client.post("/auth/login", data);
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function logout() {
+    try {
+        return await client.post("/auth/logout");
     } catch (error) {
         throw error;
     }

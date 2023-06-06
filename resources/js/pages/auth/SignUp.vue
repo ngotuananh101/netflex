@@ -255,6 +255,7 @@ export default {
                     break;
                 case 'auth/error':
                     this.isRegister = false;
+                    console.log(mutation.payload.response.data.message);
                     this.$root.showSnackbar('danger', mutation.payload.response.data.message);
                     break;
             }

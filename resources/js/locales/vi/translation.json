@@ -195,7 +195,7 @@
             "count": "Bạn có thể gửi lại email sau <span class='fs-5 text-danger'>{{time}}</span> giây."
         },
         "verify" : {
-            "verify": "Xác thực địa chỉ email",
+            "title": "Xác thực địa chỉ email",
             "wait": "Vui lòng đợi một chút trong khi chúng tôi kiểm tra email của bạn",
             "success" : "Xác thực thành công! Bạn có thể sử dụng ứng dụng ngay bây giờ.",
             "error" : "Đã xảy ra lỗi. Vui lòng thử lại sau. Nếu lỗi vẫn tiếp diễn, hãy liên hệ với chúng tôi qua email <a href='mailto:{{email}}' class='text-success'>{{email}}<a> để được hỗ trợ.",
