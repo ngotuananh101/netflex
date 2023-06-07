@@ -3,10 +3,12 @@ import store from "../stores";
 
 import LandingRoutes from "./modules/landing";
 import AuthRoutes from "./modules/auth";
+import HomeRoutes from "./modules/home";
 
 const routes = [
     ...LandingRoutes,
     ...AuthRoutes,
+    ...HomeRoutes,
 ];
 
 const router = createRouter({
