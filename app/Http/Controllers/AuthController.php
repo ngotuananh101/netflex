@@ -128,17 +128,29 @@ class AuthController extends Controller
                 'email' => 'required|email|exists:users',
                 'password' => 'required|string|min:8|max:60',
                 'remember_me' => 'boolean',
+                'device' => 'required|string',
+                'ip' => 'required|ip',
             ]);
             $credentials = request(['email', 'password']);
-            if (!auth()->attempt($credentials)) {
+            if (!auth()->attempt($credentials, $request->input('remember_me'))) {
                 throw new \Exception('auth3');
-            } else{
-                $user = User::where('email', $request->input('email'))->first();
             }
-            return response()->json([
+            $user = User::where('email', $request->input('email'))->first();
+            $expiresAt = $request->input('remember_me') ? Carbon::now()->addMonth(1) : Carbon::now()->addHour(6);
+            $token = $user->createToken(name: 'accessToken', expiresAt: $expiresAt);
+            $ip = $request->input('ip');
+            $device = $request->input('device');
+            $token->accessToken->ip = $ip;
+            $token->accessToken->device = $device;
+            $token->accessToken->save();
+            $res = [
                 'user' => $user,
-                'access_token' => $user->createToken('accessToken')->plainTextToken,
-            ], 200);
+                'access_token' => $token->plainTextToken,
+            ];
+            if ($request->input('remember_me')){
+                $res['remember_me'] = true;
+            }
+            return response()->json($res, 200);
         } catch (\Exception $ex){
             return response()->json([
                 'message' => $ex->getMessage(),

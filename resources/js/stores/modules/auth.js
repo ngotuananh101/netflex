@@ -1,5 +1,7 @@
 import authService from "../../services/auth.service";
+import device from "../../services/device";
 import Cookies from "js-cookie";
+
 export default {
     namespaced: true,
     state: {
@@ -26,8 +28,6 @@ export default {
             state.status = "success";
             state.user = user_data.user;
             state.access_token = user_data.access_token;
-            localStorage.setItem("user", JSON.stringify(user_data.user));
-            Cookies.set("access_token", user_data.access_token, { expires: 1 });
         },
         resendSuccess(state) {
             state.status = "success";
@@ -41,8 +41,6 @@ export default {
             state.status = "success";
             state.user = user_data.user;
             state.access_token = user_data.access_token;
-            localStorage.setItem("user", JSON.stringify(user_data.user));
-            Cookies.set("access_token", user_data.access_token, { expires: 1 });
         },
         removeData(state) {
             state.status = null;
@@ -86,6 +84,8 @@ export default {
         async login({ commit }, data) {
             commit("request");
             try {
+                data.ip = await device.getIp();
+                data.device = device.getDevice();
                 let response = await authService.login(data);
                 commit("loginSuccess", response.data);
             } catch (error) {

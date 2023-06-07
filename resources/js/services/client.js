@@ -39,7 +39,16 @@ const _requestInterceptor = (config) => {
 const _responseInterceptor = (response) => {
     // if response have access_token then set it to Cookies
     if(response.data.access_token) {
-        Cookies.set("access_token", response.data.access_token, { expires: 1 });
+        if (response.data.remember_me) {
+            Cookies.set("access_token", response.data.access_token, { expires: 30 });
+        } else {
+            Cookies.set("access_token", response.data.access_token);
+        }
+
+        // if response have user then set it to localStorage
+        if(response.data.user) {
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+        }
     }
     return response;
 }

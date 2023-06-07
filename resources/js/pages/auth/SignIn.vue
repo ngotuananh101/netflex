@@ -56,7 +56,7 @@
                                             </argon-button>
                                         </div>
                                         <div class="mt-2 d-flex justify-content-between">
-                                            <argon-checkbox id="remember" name="remember_me" v-model="remember_me">
+                                            <argon-checkbox id="remember" name="remember_me" :checked="remember_me==='on'" v-model="remember_me">
                                                 {{ $t('auth.login.remember_me') }}
                                             </argon-checkbox>
                                             <a href="#" style="font-size: 0.8rem; color: #b3b3b3;">{{
@@ -136,7 +136,7 @@ export default {
         return {
             email: 'ngotuananh2101@gmail.com',
             password: 'TuanAnh2101@',
-            remember_me: false,
+            remember_me: 'on',
             footer: [1, 2, 8, 9, 10, 11],
             language: 'en',
         }
@@ -154,6 +154,7 @@ export default {
                     break;
                 case 'auth/error':
                     this.status = 'error';
+                    console.log(mutation.payload)
                     this.$root.showSnackbar('danger', mutation.payload.response.data.message);
                     break;
             }
@@ -167,8 +168,12 @@ export default {
             let form = e.target;
             if (form.checkValidity()) {
                 e.preventDefault();
-                let formData = new FormData(form);
-                this.$store.dispatch('auth/login', formData);
+                let data = {
+                    email: this.email,
+                    password: this.password,
+                    remember_me: this.remember_me === 'on',
+                }
+                this.$store.dispatch('auth/login', data);
             }
             form.classList.add('was-validated');
         },
