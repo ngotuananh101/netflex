@@ -16,6 +16,7 @@
         "bowser": "^2.11.0",
         "choices.js": "^10.2.0",
         "core-js": "^3.30.1",
+        "country-codes-list": "^1.6.10",
         "i18next": "^22.4.15",
         "i18next-browser-languagedetector": "^7.0.1",
         "i18next-vue": "^2.1.1",

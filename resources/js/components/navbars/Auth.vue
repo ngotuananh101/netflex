@@ -4,6 +4,9 @@
             <router-link :to="{name: 'landing'}" class="navbar-brand">
                 <img src="../../assets/img/logos/logo.png" alt="logo" class="img-fluid" style="height: 3rem;"/>
             </router-link>
+            <router-link :to="{name: 'login'}" v-if="this.$route.name === 'forgot-password'" class="navbar-brand fs-4 text-white fw-bold">
+                {{ $t('landing.button') }}
+            </router-link>
         </div>
     </nav>
 </template>
@@ -28,23 +31,4 @@ export default {
 </script>
 
 <style>
-.navbar-toggler .navbar-toggler-icon .navbar-toggler-bar {
-    background-color: #fff;
-    height: 2px;
-    width: 30px;
-}
-
-.collapse.show {
-    background-color: #fff;
-    border-radius: 10px;
-}
-
-#choices-language {
-    background-color: rgba(0, 0, 0, 0.6);
-    background-image: url(https://coothead.co.uk/images/world.png);
-    background-repeat: no-repeat;
-    background-size: 1rem auto;
-    background-position: 1rem center;
-    padding-left: 2.5rem !important;
-}
 </style>

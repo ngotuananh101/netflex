@@ -24,7 +24,7 @@ export default {
         request(state) {
             state.status = "loading";
         },
-        registerSuccess(state,user_data) {
+        registerSuccess(state, user_data) {
             state.status = "success";
             state.user = user_data.user;
             state.access_token = user_data.access_token;
@@ -42,6 +42,12 @@ export default {
             state.user = user_data.user;
             state.access_token = user_data.access_token;
         },
+        forgotSuccess(state, message) {
+            state.status = "success";
+        },
+        resetSuccess(state, message) {
+            state.status = "success";
+        },
         removeData(state) {
             state.status = null;
             state.user = null;
@@ -54,7 +60,7 @@ export default {
         }
     },
     actions: {
-        async register({ commit }, data) {
+        async register({commit}, data) {
             commit("request");
             try {
                 let response = await authService.register(data);
@@ -63,7 +69,7 @@ export default {
                 commit("error", error);
             }
         },
-        async resend({commit}, email){
+        async resend({commit}, email) {
             commit("request");
             try {
                 await authService.resend(email);
@@ -72,7 +78,7 @@ export default {
                 commit("error", error);
             }
         },
-        async verify({commit}, {id, hash, expires, signature}){
+        async verify({commit}, {id, hash, expires, signature}) {
             commit("request");
             try {
                 await authService.verify(id, hash, expires, signature);
@@ -81,7 +87,7 @@ export default {
                 commit("error", error);
             }
         },
-        async login({ commit }, data) {
+        async login({commit}, data) {
             commit("request");
             try {
                 data.ip = await device.getIp();
@@ -92,11 +98,28 @@ export default {
                 commit("error", error);
             }
         },
-        async logout({ commit }) {
+        async logout({commit}) {
             commit("request");
             try {
                 await authService.logout();
-                commit("error");
+            } catch (error) {
+                commit("error", error);
+            }
+        },
+        async forgot({commit}, data) {
+            commit("request");
+            try {
+                let response = await authService.forgot(data);
+                commit("forgotSuccess", response.data);
+            } catch (error) {
+                commit("error", error);
+            }
+        },
+        async reset({commit}, data) {
+            commit("request");
+            try {
+                let response = await authService.reset(data);
+                commit("resetSuccess", response.data);
             } catch (error) {
                 commit("error", error);
             }

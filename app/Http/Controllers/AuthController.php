@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
@@ -24,7 +25,7 @@ class AuthController extends Controller
         try {
             $request->validate([
                 'email' => 'required|email|unique:users',
-                'password' => 'required|string|min:8|max:60|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,60}$/',
+                'password' => 'required|string|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,60}$/',
                 'plan' => 'required|exists:plans,id',
                 'transfer_code' => 'required|string|regex:/^[0-9]{6}$/',
             ]);
@@ -173,6 +174,70 @@ class AuthController extends Controller
         } catch (\Exception $ex){
             return response()->json([
                 'message' => $ex->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Forgot password
+     * @param Request $request
+     * @return JsonResponse
+     */
+    function forgot(Request $request): JsonResponse
+    {
+        try {
+            $request->validate([
+                'email' => 'required|email|exists:users',
+                'type' => 'required|string|in:email,sms',
+            ]);
+            $status = Password::sendResetLink(
+                $request->only('email')
+            );
+            if ($status == Password::RESET_LINK_SENT) {
+                return response()->json([
+                    'message' => __('custom.forgot.ok'),
+                ], 200);
+            } else {
+                throw new \Exception(__('custom.forgot.error'));
+            }
+        } catch (\Exception $ex){
+            return response()->json([
+                'message' => $ex->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * Reset password
+     * @param Request $request
+     * @return JsonResponse
+     */
+    function reset(Request $request): JsonResponse
+    {
+        try {
+            $request->validate([
+                'token' => 'required|string',
+                'email' => 'required|email|exists:users',
+                'password' => 'required|string|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,60}$/', // min 8, max 60, at least 1 uppercase, 1 lowercase, 1 number, 1 special character
+            ]);
+            $status = Password::reset(
+                $request->only('email', 'password', 'password_confirmation', 'token'),
+                function ($user) use ($request) {
+                    $user->forceFill([
+                        'password' => Hash::make($request->input('password')),
+                    ])->save();
+                }
+            );
+            if ($status == Password::PASSWORD_RESET) {
+                return response()->json([
+                    'message' => __('custom.reset.ok'),
+                ], 200);
+            } else {
+                throw new \Exception(__('custom.reset.error'));
+            }
+        } catch (\Exception $ex) {
+            return response()->json([
+                'message' => $ex->getMessage()
             ], 500);
         }
     }

@@ -7,7 +7,7 @@
       :name="name"
       :checked="checked"
     />
-    <label class="custom-control-label" :for="id">
+    <label class="custom-control-label text-white fs-6" :for="id">
       <slot />
     </label>
   </div>

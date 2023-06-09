@@ -11,12 +11,12 @@
                 </div>
             </div>
         </div>
-        <main class="main-content main-content-bg mt-3">
+        <main class="main-content main-content-bg mt-3 w-100">
             <div class="min-vh-75">
                 <div class="container h-100">
                     <div class="row justify-content-center">
-                        <div class="col-lg-8 col-12 mt-2 mx-md-5">
-                            <div class="card border-0 mb-0 px-md-5 px-3 py-5 mx-md-5">
+                        <div class="col-md-5 col-12 mt-3">
+                            <div class="card border-0 mb-0 p-md-5 p-3 mx-md-5">
                                 <div class="card-header pt-0 bg-transparent pb-0 mt-md-3">
                                     <h3 class="text-white text-start">{{ $t('auth.login.title') }}</h3>
                                 </div>
@@ -59,9 +59,9 @@
                                             <argon-checkbox id="remember" name="remember_me" :checked="remember_me==='on'" v-model="remember_me">
                                                 {{ $t('auth.login.remember_me') }}
                                             </argon-checkbox>
-                                            <a href="#" style="font-size: 0.8rem; color: #b3b3b3;">{{
-                                                    $t('auth.login.need_help')
-                                                }}</a>
+                                            <router-link :to="{name: 'forgot-password'}" style="font-size: 0.8rem; color: #b3b3b3;">
+                                                {{ $t('auth.login.need_help') }}
+                                            </router-link>
                                         </div>
                                     </form>
                                     <div class="text-start" style="margin-top: 5rem;">
@@ -85,42 +85,15 @@
                 </div>
             </div>
         </main>
-        <footer class="w-100 mt-md-5" style="background-color: rgba(0, 0, 0, 0.7);">
-            <div class="container my-5 position-relative" style="z-index: 3;">
-                <div class="row opacity-6">
-                    <div class="col-12 mb-3">
-                        <a :href="$t('landing.footers.0.link')" class="fs-6 text-white">{{
-                                $t('landing.footers.0.title')
-                            }}</a>
-                    </div>
-                    <div class="col-md-3 col-6 mt-2" v-for="value in footer">
-                        <a :href="$t('landing.footers.' + value + '.link')"
-                           class="text-light text-sm">{{ $t('landing.footers.' + value + '.title') }}</a>
-                    </div>
-                    <div class="col-12 mb-3"></div>
-                    <div class="col-md-2 col-6 mt-2 d-flex flex-column">
-                        <select
-                            id="choices-language"
-                            class="form-control px-4 fs-6 text-white"
-                            name="choices-language"
-                            style="max-height: 100%;"
-                            @change="changeLanguage"
-                            v-model="language"
-                        >
-                            <option value="vi" data-select-text="Tiếng Việt">Tiếng Việt</option>
-                            <option value="en" data-select-text="English">English</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <auth-footer />
     </div>
 </template>
 
 <script>
 import ArgonButton from "../../components/ArgonButton.vue";
 import ArgonCheckbox from "../../components/ArgonCheckbox.vue";
-import Navbar from "../../components/navbars/LogIn.vue";
+import Navbar from "../../components/navbars/Auth.vue";
+import AuthFooter from "../../components/footers/Auth.vue";
 
 export default {
     name: "Login",
@@ -128,6 +101,7 @@ export default {
         Navbar,
         ArgonButton,
         ArgonCheckbox,
+        AuthFooter,
     },
     title() {
         return this.$t('auth.login.title');
@@ -137,12 +111,9 @@ export default {
             email: 'ngotuananh2101@gmail.com',
             password: 'TuanAnh2101@',
             remember_me: 'on',
-            footer: [1, 2, 8, 9, 10, 11],
-            language: 'en',
         }
     },
     created() {
-        this.language = this.$root.language;
         this.unsubscribe = this.$store.subscribe((mutation, state) => {
             switch (mutation.type) {
                 case 'auth/request':
@@ -176,9 +147,6 @@ export default {
                 this.$store.dispatch('auth/login', data);
             }
             form.classList.add('was-validated');
-        },
-        changeLanguage(e) {
-            this.$root.changeLanguage(e.target.value);
         },
     },
 }

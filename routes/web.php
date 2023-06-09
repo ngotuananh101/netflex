@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
+
 Route::get('auth/verify/{id}/{hash}', function () {
     return view('welcome');
 })->name('verification.verify')->middleware('signed');
+
+Route::get('auth/reset/{token}', function () {
+    return view('welcome');
+})->name('password.reset')->middleware('signed');

@@ -2,7 +2,10 @@ export default [
     {
         path: '/auth',
         redirect: {name: 'login'},
-        meta: {isGuest: true},
+        meta: {
+            isGuest: true,
+            requiresAuth: false,
+        },
         children: [
             {
                 path: 'login',
@@ -40,6 +43,16 @@ export default [
                     requiresAuth: true,
                     isGuest: false,
                 }
+            },
+            {
+                path: 'forgot-password',
+                name: 'forgot-password',
+                component: () => import('../../pages/auth/ForgotPassword.vue'),
+            },
+            {
+                path: 'reset/:token',
+                name: 'reset-password',
+                component: () => import('../../pages/auth/ResetPassword.vue'),
             }
         ]
     }

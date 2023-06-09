@@ -2,7 +2,7 @@
     <div class="position-fixed top-1 end-1" style="z-index: 99999;">
         <argon-snackbar
             v-for="(notification, index) in notifications"
-            :title="this.$t('app.notifications')"
+            :title="this.$t('app.system')"
             date=""
             class="notification"
             :data-i="index"

@@ -5,7 +5,9 @@ export default {
     resend,
     verify,
     login,
-    logout
+    logout,
+    forgot,
+    reset
 }
 
 async function register(data) {
@@ -43,6 +45,22 @@ async function login(data) {
 async function logout() {
     try {
         return await client.post("/auth/logout");
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function forgot(data) {
+    try {
+        return await client.post("/auth/forgot", data);
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function reset(data) {
+    try {
+        return await client.post("/auth/reset", data);
     } catch (error) {
         throw error;
     }
