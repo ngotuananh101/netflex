@@ -92,14 +92,14 @@ import Navbar from "../../components/navbars/Auth.vue";
 import AuthFooter from "../../components/footers/Auth.vue";
 
 export default {
-    name: "Forgot Password",
+    name: "Reset Password",
     components: {
         Navbar,
         ArgonButton,
         AuthFooter,
     },
     title() {
-        return this.$t('auth.forgot.title');
+        return this.$t('auth.reset.title');
     },
     data() {
         return {
