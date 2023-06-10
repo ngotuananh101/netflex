@@ -20,6 +20,7 @@ router.beforeEach((to, from, next) => {
     const { requiresAuth, isGuest } = to.meta;
 
     // Kiểm tra trang yêu cầu đăng nhập mà người dùng chưa đăng nhập
+    console.log(requiresAuth, access_token);
     if (requiresAuth && !access_token) {
         return next({ name: "login" });
     }
@@ -45,7 +46,7 @@ router.beforeEach((to, from, next) => {
     }
 
     // Kiểm tra trường hợp ngoại lệ khi truy cập vào trang profile và chưa có thông tin profile người dùng
-    if (to.name !== "select profile" && !user.profile) {
+    if (!to.name.includes('profile') && user && !user.profile) {
         return next({ name: "select profile" });
     }
 

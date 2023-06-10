@@ -24,6 +24,11 @@ export default [
                         name: 'select profile',
                         component: () => import('../../pages/home/profile/Select.vue'),
                     },
+                    {
+                        path: 'manage',
+                        name: 'manage profile',
+                        component: () => import('../../pages/home/profile/Manage.vue'),
+                    },
                 ]
             }
         ]

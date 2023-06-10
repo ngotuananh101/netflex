@@ -225,8 +225,9 @@
     },
     "profile": {
         "title": "Profiles",
-        "who_watching": "Who's watching?",
+        "who_watching": "Who's Watching?",
         "manage_profile": "Manage Profiles",
-        "add_profile": "Add Profile"
+        "add_profile": "Add Profile",
+        "done": "Done"
     }
 }

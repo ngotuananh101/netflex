@@ -1,4 +1,5 @@
-@import url('./FontAwesome/css/all.min.css');
+/*@import url('./FontAwesome/css/all.min.css');*/
+@import url('https://poseidon-code.github.io/supacons/dist/supacons.all.css');
 
 .btn-danger{
     background: #e50914 !important;

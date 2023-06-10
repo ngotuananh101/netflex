@@ -1,9 +1,9 @@
 <script>
 export default {
-    name: 'Select Profile',
+    name: 'Manage Profile',
     components: {},
     title() {
-        return this.$t('profile.who_watching');
+        return this.$t('profile.manage_profile');
     },
     data() {
         return {
@@ -11,7 +11,7 @@ export default {
         };
     },
     created() {
-        console.log('Select Profile');
+        console.log('Manage Profile');
         console.log(this.profiles.length)
     }
 };
@@ -19,25 +19,22 @@ export default {
 
 <template>
     <main id="select-profile">
-        <h1 class="text-white fw-bold">{{ this.$t('profile.who_watching') }}</h1>
+        <h1 class="text-white fw-bold">{{ this.$t('profile.manage_profile') }}:</h1>
         <div class="container mx-md-5">
             <div id="profile-list" class="mt-3 row">
                 <div class="card p-3 col-md-2 col-5">
-                    <img class="card-img-top" src="https://picsum.photos/200/200" alt="Card image cap">
+                    <div class="image">
+                        <i class="fa-sharp fa-light fa-pencil edit-icon"></i>
+                        <img class="card-img-top" src="https://picsum.photos/200/200" alt="Card image cap">
+                    </div>
                     <div class="card-body p-2">
                         <p class="card-title text-center">Card title</p>
                     </div>
                 </div>
-                <div class="card p-3 col-md-2 col-5" v-if="profiles.length < 5">
-                    <img class="card-img-top" src="../../../assets/img/avatar/add-profile.png" alt="Card image cap">
-                    <div class="card-body p-2">
-                        <p class="card-title text-center">{{ this.$t('profile.add_profile') }}</p>
-                    </div>
-                </div>
             </div>
         </div>
-        <router-link :to="{ name: 'manage profile' }" id="manage-profile" class="btn mt-md-5 mt-3">
-            {{ this.$t('profile.manage_profile') }}
+        <router-link :to="{ name: 'login' }" id="done-profile" class="btn mt-md-5 mt-3">
+            {{ this.$t('profile.done') }}
         </router-link>
     </main>
 </template>
@@ -59,17 +56,16 @@ export default {
     align-items: center;
 }
 
-#manage-profile {
+#done-profile {
     padding: 0.75rem 2.5rem;
-    background: transparent;
-    color: white;
-    border: 1px solid white;
+    background: white;
+    color: black;
     border-radius: 0;
-    font-size: 1rem;
-    opacity: 0.5;
+    font-size: 1.2rem;
 
     &:hover {
-        opacity: 1;
+        background: var(--nf-default-color);
+        color: white;
     }
 }
 
@@ -80,8 +76,20 @@ export default {
     cursor: pointer;
     box-shadow: none;
 
-    .card-img-top {
-        border-radius: 0.25rem;
+    .image {
+        position: relative;
+        .edit-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+        }
+
+        .card-img-top {
+            border-radius: 0.25rem;
+        }
     }
 
     .card-body {
