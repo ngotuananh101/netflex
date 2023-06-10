@@ -2,10 +2,10 @@
     "app": {
         "notifications": "Thông báo",
         "system": "Hệ thống",
-        "name" : "Netflex",
-        "title" : "Xem phim, chương trình truyền hình, phim tài liệu đoạt giải thưởng và nhiều nội dung khác."
+        "name": "Netflex",
+        "title": "Xem phim, chương trình truyền hình, phim tài liệu đoạt giải thưởng và nhiều nội dung khác."
     },
-    "error" : {
+    "error": {
     },
     "landing": {
         "title": "Chương trình truyền hình, phim không giới hạn và nhiều nội dung khác",
@@ -137,73 +137,72 @@
             "need_help": "Bạn cần trợ giúp?",
             "new_to_netflex": "Bạn mới tham gia Netflex?",
             "sign_up_now": "Đăng ký ngay.",
-            "protected" : "Trang này được Google reCAPTCHA bảo vệ để đảm bảo bạn không phải là robot.",
+            "protected": "Trang này được Google reCAPTCHA bảo vệ để đảm bảo bạn không phải là robot.",
             "protected_link": "Tìm hiểu thêm."
         },
         "signup": {
             "title": "Đăng ký",
             "login": "Đăng nhập",
-            "next" : "Tiếp theo",
-            "back" : "Quay lại",
-            "step" : "Bước",
-            "loading" : "Đang tải...",
-            "steps" : [
+            "next": "Tiếp theo",
+            "back": "Quay lại",
+            "step": "Bước",
+            "loading": "Đang tải...",
+            "steps": [
                 {
-                    "title" : "Chào mừng trở lại!",
-                    "title2" : "Tham gia Netflex thật dễ dàng.",
-                    "subtitle" : "Nhập mật khẩu của bạn và bạn sẽ được xem ngay lập tức."
+                    "title": "Chào mừng trở lại!",
+                    "title2": "Tham gia Netflex thật dễ dàng.",
+                    "subtitle": "Nhập mật khẩu của bạn và bạn sẽ được xem ngay lập tức."
                 },
                 {
-                    "title" : "Chọn gói của bạn.",
-                    "options" : [
+                    "title": "Chọn gói của bạn.",
+                    "options": [
                         "Không có cam kết, hủy bỏ bất cứ lúc nào.",
                         "Mọi thứ trên Netflex với một mức giá thấp.",
                         "Không có quảng cáo và không có phí bổ sung."
                     ]
-
                 },
                 {
-                    "title" : "Chọn gói phù hợp với bạn.",
-                    "options" : [
+                    "title": "Chọn gói phù hợp với bạn.",
+                    "options": [
                         "Xem tất cả những gì bạn muốn. Không có quảng cáo.",
                         "Đề xuất chỉ dành cho bạn.",
                         "Thay đổi hoặc hủy kế hoạch của bạn bất cứ lúc nào."
                     ],
-                    "subtitle" : "Tính khả dụng của HD (720p), Full HD (1080p), Ultra HD (4K) và HDR tùy thuộc vào khả năng của thiết bị và dịch vụ internet của bạn. Không phải tất cả nội dung đều có sẵn ở tất cả các độ phân giải. Xem Điều khoản sử dụng của chúng tôi để biết thêm chi tiết.",
-                    "subtitle2" : "Chỉ những người sống cùng bạn mới có thể sử dụng tài khoản của bạn. Xem trên 4 thiết bị khác nhau cùng lúc với Premium, 2 với Standard và 1 với Basic"
+                    "subtitle": "Tính khả dụng của HD (720p), Full HD (1080p), Ultra HD (4K) và HDR tùy thuộc vào khả năng của thiết bị và dịch vụ internet của bạn. Không phải tất cả nội dung đều có sẵn ở tất cả các độ phân giải. Xem Điều khoản sử dụng của chúng tôi để biết thêm chi tiết.",
+                    "subtitle2": "Chỉ những người sống cùng bạn mới có thể sử dụng tài khoản của bạn. Xem trên 4 thiết bị khác nhau cùng lúc với Premium, 2 với Standard và 1 với Basic"
                 },
                 {
-                    "title" : "Chọn cách thanh toán.",
-                    "subtitle" : "Thanh toán của bạn được mã hóa và bạn có thể thay đổi cách thanh toán của mình bất kỳ lúc nào.",
-                    "receiver" : "Người nhận",
-                    "phone_number" : "Số điện thoại",
-                    "amount" : "Số tiền",
-                    "content" : "Nội dung"
+                    "title": "Chọn cách thanh toán.",
+                    "subtitle": "Thanh toán của bạn được mã hóa và bạn có thể thay đổi cách thanh toán của mình bất kỳ lúc nào.",
+                    "receiver": "Người nhận",
+                    "phone_number": "Số điện thoại",
+                    "amount": "Số tiền",
+                    "content": "Nội dung"
                 }
             ],
-            "wait" : "Vui lòng đợi trong giây lát...",
-            "error" : "Đã xảy ra lỗi. Vui lòng thử lại sau.",
-            "success" : "Đăng ký thành công!"
+            "wait": "Vui lòng đợi trong giây lát...",
+            "error": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+            "success": "Đăng ký thành công!"
         },
-        "sent" : {
-            "title" : "Xác thực địa chỉ email",
-            "subtitle" : "Chúng tôi đã gửi một email xác thực đến <a href='mailto:{{email}}' class='text-success'>{{email}}</a>. Vui lòng kiểm tra hộp thư đến hoặc thư rác của bạn. Nếu bạn không nhận được email, hãy nhấp vào nút bên dưới để gửi lại email.",
-            "contact" : "Nếu bạn vẫn không nhận được email sau 10 phút, hãy liên hệ với chúng tôi qua email <a href='mailto:{{email}}' class='text-success'>{{email}}<a> để được hỗ trợ.",
-            "resend" : "Gửi lại email",
-            "wait" : "Vui lòng đợi trong giây lát...",
-            "success" : "Gửi lại thành công!",
-            "error" : "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+        "sent": {
+            "title": "Xác thực địa chỉ email",
+            "subtitle": "Chúng tôi đã gửi một email xác thực đến <a href='mailto:{{email}}' class='text-success'>{{email}}</a>. Vui lòng kiểm tra hộp thư đến hoặc thư rác của bạn. Nếu bạn không nhận được email, hãy nhấp vào nút bên dưới để gửi lại email.",
+            "contact": "Nếu bạn vẫn không nhận được email sau 10 phút, hãy liên hệ với chúng tôi qua email <a href='mailto:{{email}}' class='text-success'>{{email}}<a> để được hỗ trợ.",
+            "resend": "Gửi lại email",
+            "wait": "Vui lòng đợi trong giây lát...",
+            "success": "Gửi lại thành công!",
+            "error": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
             "count": "Bạn có thể gửi lại email sau <span class='fs-5 text-danger'>{{time}}</span> giây."
         },
-        "verify" : {
+        "verify": {
             "title": "Xác thực địa chỉ email",
             "wait": "Vui lòng đợi một chút trong khi chúng tôi kiểm tra email của bạn",
-            "success" : "Xác thực thành công! Bạn có thể sử dụng ứng dụng ngay bây giờ.",
-            "error" : "Đã xảy ra lỗi. Vui lòng thử lại sau. Nếu lỗi vẫn tiếp diễn, hãy liên hệ với chúng tôi qua email <a href='mailto:{{email}}' class='text-success'>{{email}}<a> để được hỗ trợ.",
-            "redirect" : "Bạn sẽ được chuyển hướng sang trang chủ sau <span class='fs-5 text-danger'>{{time}}</span> giây.",
-            "login" : "Đăng nhập"
+            "success": "Xác thực thành công! Bạn có thể sử dụng ứng dụng ngay bây giờ.",
+            "error": "Đã xảy ra lỗi. Vui lòng thử lại sau. Nếu lỗi vẫn tiếp diễn, hãy liên hệ với chúng tôi qua email <a href='mailto:{{email}}' class='text-success'>{{email}}<a> để được hỗ trợ.",
+            "redirect": "Bạn sẽ được chuyển hướng sang trang chủ sau <span class='fs-5 text-danger'>{{time}}</span> giây.",
+            "login": "Đăng nhập"
         },
-        "forgot" : {
+        "forgot": {
             "title": "Quên mật khẩu",
             "how": "Bạn muốn đặt lại mật khẩu của mình như thế nào?",
             "email": "Email",
@@ -225,5 +224,11 @@
             "password_not_match": "Mật khẩu không khớp.",
             "loading": "Đang đặt lại mật khẩu..."
         }
+    },
+    "profile": {
+        "title": "Hồ sơ",
+        "who_watching": "Ai đang xem?",
+        "manage_profile": "Quản lý hồ sơ",
+        "add_profile": "Thêm hồ sơ"
     }
 }

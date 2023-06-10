@@ -222,5 +222,11 @@
             "password_not_match": "Password does not match.",
             "loading": "Loading..."
         }
+    },
+    "profile": {
+        "title": "Profiles",
+        "who_watching": "Who's watching?",
+        "manage_profile": "Manage Profiles",
+        "add_profile": "Add Profile"
     }
 }

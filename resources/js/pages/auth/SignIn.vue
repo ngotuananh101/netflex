@@ -121,7 +121,7 @@ export default {
                     break;
                 case 'auth/loginSuccess':
                     this.status = 'success';
-                    location.href = '/home';
+                    this.$router.push({name: 'home profile'});
                     break;
                 case 'auth/error':
                     this.status = 'error';
