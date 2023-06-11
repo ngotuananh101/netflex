@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Home\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -29,4 +30,5 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('verify/{id}/{hash}', [AuthController::class, 'verify']); //->middleware(['signed']); // uncomment this line if you want to use signed url
         Route::post('logout', [AuthController::class, 'logout']);
     });
+    Route::resource('profile' , ProfileController::class)->only(['index', 'update']);
 });

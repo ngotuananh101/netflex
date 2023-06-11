@@ -24,7 +24,8 @@ export default {
             <div id="profile-list" class="mt-3 row">
                 <div class="card p-3 col-md-2 col-5">
                     <div class="image">
-                        <i class="fa-sharp fa-light fa-pencil edit-icon"></i>
+                        <i class='fa-light fa-pen edit-icon'></i>
+                        <span class="mask opacity-5" style="background: #000;"></span>
                         <img class="card-img-top" src="https://picsum.photos/200/200" alt="Card image cap">
                     </div>
                     <div class="card-body p-2">
@@ -33,7 +34,7 @@ export default {
                 </div>
             </div>
         </div>
-        <router-link :to="{ name: 'login' }" id="done-profile" class="btn mt-md-5 mt-3">
+        <router-link :to="{ name: 'select profile' }" id="done-profile" class="btn mt-md-5 mt-3">
             {{ this.$t('profile.done') }}
         </router-link>
     </main>
@@ -83,6 +84,7 @@ export default {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            z-index: 2;
             color: white;
             font-size: 2rem;
         }

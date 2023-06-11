@@ -58,6 +58,11 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'users.update']);
         Permission::create(['name' => 'users.delete']);
 
+        Permission::create(['name' => 'profiles.view']);
+        Permission::create(['name' => 'profiles.create']);
+        Permission::create(['name' => 'profiles.update']);
+        Permission::create(['name' => 'profiles.delete']);
+
         Permission::create(['name' => 'settings.view']);
         Permission::create(['name' => 'settings.update']);
 
@@ -106,8 +111,8 @@ class DatabaseSeeder extends Seeder
         $superAdminRole = Role::create(['name' => 'super-admin']);
         $superAdminRole->givePermissionTo(Permission::where('name', 'admin')->get());
 
-        $adminRole = Role::create(['name' => 'admin']);
-        $adminRole->givePermissionTo(Permission::where('name', 'admin.access')->get());
+        $userRole = Role::create(['name' => 'user']);
+        $userRole->givePermissionTo(Permission::where('name', 'videos.rate')->get());
     }
 
     /**
