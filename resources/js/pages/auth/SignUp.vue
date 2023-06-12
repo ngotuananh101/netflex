@@ -213,10 +213,12 @@ export default {
             unsubscribe: null,
             btnRegister: null,
             isRegister: false,
+            language: 'en'
         };
     },
     created() {
         this.transfer_code = this.code;
+        this.language = this.$root.language;
         this.btnRegister = document.querySelector('.btnRegister');
         this.unsubscribe = this.$store.subscribe((mutation) => {
             switch (mutation.type) {

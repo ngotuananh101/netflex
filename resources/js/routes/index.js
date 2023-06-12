@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 import store from "../stores";
 import LandingRoutes from "./modules/landing";
 import AuthRoutes from "./modules/auth";
@@ -16,42 +16,44 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const { access_token, user } = store.state.auth;
-    const { requiresAuth, isGuest } = to.meta;
-
-    // Kiểm tra trang yêu cầu đăng nhập mà người dùng chưa đăng nhập
-    console.log(requiresAuth, access_token);
-    if (requiresAuth && !access_token) {
-        return next({ name: "login" });
+    const {access_token, user} = store.state.auth;
+    const {requiresAuth, isGuest} = to.meta;
+    // Kiểm tra xem route hiện tại có yêu cầu login hay không
+    if (requiresAuth) {
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        if (!access_token) {
+            return next({name: 'login'});
+        }
+        // kiểm tra xem người dùng đã xác thực email hay chưa
+        else if (!user.email_verified_at) {
+            // Nếu chưa xác thực và route hiện tại khác route xác thực email thì chuyển hướng đến route xác thực email
+            if (to.name !== 'sent' && to.name !== 'verify') {
+                return next({name: 'sent'});
+            }
+            return next();
+        } else if (user.email_verified_at && (to.name === 'sent' || to.name === 'verify')) {
+            // Nếu đã xác thực và route hiện tại là route xác thực email thì chuyển hướng đến route home
+            return next({name: 'home'});
+        } else {
+            // Kiểm tra xem người dùng có quyền truy cập route hiện tại hay không
+            if (to.meta.roles && !to.meta.roles.includes(user.role)) {
+                // Nếu không có quyền truy cập thì chuyển hướng đến route home
+                return next({name: 'home'});
+            }
+            // Nếu người dùng truy cập trang home và chưa chọn profile thì chuyển hướng đến route chọn profile
+            if (to.name === 'home dashboard' && !user.profile) {
+                return next({name: 'select profile'});
+            }
+            return next();
+        }
+    } else if (isGuest) {
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        if (access_token) {
+            return next({name: 'home'});
+        }
+        // Nếu chưa đăng nhập thì cho phép truy cập
+        return next();
     }
-
-    // Kiểm tra trang khách mà người dùng đã đăng nhập
-    if (isGuest && access_token) {
-        return next({ name: "home" });
-    }
-
-    // Kiểm tra email xác minh
-    if (user && !user.email_verified_at) {
-        return next({ name: "verify" });
-    }
-
-    // Kiểm tra nếu người dùng đăng nhập và truy cập trang gửi hoặc xác minh
-    if ((to.name === "sent" || to.name === "verify") && access_token) {
-        return next({ name: "home" });
-    }
-
-    // Kiểm tra truy cập trang và vai trò người dùng
-    if (to.meta.access && !to.meta.access.includes(user.role)) {
-        return next({ name: "home" });
-    }
-
-    // Kiểm tra trường hợp ngoại lệ khi truy cập vào trang profile và chưa có thông tin profile người dùng
-    if (!to.name.includes('profile') && user && !user.profile) {
-        return next({ name: "select profile" });
-    }
-
-    // Trường hợp không thỏa mãn bất kỳ điều kiện kiểm tra nào, cho phép đi tiếp
-    next();
 });
 
 export default router;

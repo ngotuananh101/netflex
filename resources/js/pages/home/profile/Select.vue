@@ -10,7 +10,8 @@ export default {
             profiles: [],
             status: 'loading',
             unsubscribe: null,
-            addProfileModal: null
+            addProfileModal: null,
+            language: this.$root.language
         };
     },
     methods: {

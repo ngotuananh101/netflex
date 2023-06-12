@@ -14,7 +14,7 @@ NetFlex is a streaming platform that allows you to watch a variety of movies and
 ## Features
 - Landing Page
 - Change Language (English, Vietnamese)
-#### Authentication
+### Authentication
 - Register
 - Send email verification
 - Resend email verification
@@ -22,7 +22,9 @@ NetFlex is a streaming platform that allows you to watch a variety of movies and
 - Login
 - Forgot password
 - Reset password
-### ...
+### Home Page
+#### Profile
+- View profile
 
 
 ## Installation
