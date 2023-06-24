@@ -1,5 +1,5 @@
 /*@import url('./FontAwesome/css/all.min.css');*/
-@import url('https://poseidon-code.github.io/supacons/dist/supacons.all.css');
+@import url('https://cdn.anhnt.id.vn/fontawesome/v6.4.0/css/all.min.css');
 
 .btn-danger {
     background: #e50914 !important;
@@ -111,6 +111,7 @@ html {
     color: white !important;
     border: 0 !important;
     width: 100% !important;
+    height: 2.75rem !important;
     font-size: 1.35rem !important;
     padding: 0.35rem 1rem !important;
 }
@@ -139,4 +140,13 @@ html {
     background: #666 !important;
     box-shadow: none !important;
     outline: none !important;
+}
+
+.profile-checkbox{
+    background: #000 !important;
+    color: white !important;
+    border: 1px solid white !important;
+    font-size: 1.25rem !important;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem  0.5rem 0.5rem !important;
 }

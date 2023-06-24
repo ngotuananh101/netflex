@@ -1,7 +1,11 @@
 <script>
+import Checkbox from "../../../components/ArgonCheckbox.vue";
+
 export default {
     name: 'Select Profile',
-    components: {},
+    components: {
+        Checkbox
+    },
     title() {
         return this.$t('profile.who_watching');
     },
@@ -11,14 +15,17 @@ export default {
             status: 'loading',
             unsubscribe: null,
             addProfileModal: null,
-            language: this.$root.language
+            language: this.$root.language,
+            profile: {
+                avatar: 'https://picsum.photos/200/200',
+                name: '',
+                is_kid: false
+            }
         };
     },
     methods: {
         init() {
-            console.log('init');
             let bootstrap = this.$store.state.config.bootstrap;
-            console.log(bootstrap)
             this.addProfileModal = new bootstrap.Modal(document.getElementById('addProfile'));
         }
     },
@@ -68,7 +75,7 @@ export default {
                     <div class="card p-3 col-md-2 col-5" v-if="profiles_size < 5" @click="this.addProfileModal.show()">
                         <img class="card-img-top" src="../../../assets/img/avatar/add-profile.png" alt="Card image cap">
                         <div class="card-body p-2">
-                            <p class="card-title text-center">{{ this.$t('profile.add_profile') }}</p>
+                            <p class="card-title text-center fs-4 text-white opacity-5">{{ this.$t('profile.add_profile') }}</p>
                         </div>
                     </div>
                 </div>
@@ -78,40 +85,40 @@ export default {
             </router-link>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="addProfile" tabindex="-1" aria-labelledby="addProfile" aria-hidden="true">
+        <div class="modal fade" id="addProfile" tabindex="-1" aria-labelledby="addProfile" aria-hidden="true" v-if="profiles_size < 5">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content">
                     <div class="modal-header">
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body d-flex align-items-center">
                         <div class="container">
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-center align-items-center">
                                 <div class="col-md-7 col-12">
-                                    <h1 class="title">Add Profile</h1>
+                                    <h1 class="title fs-1">Add Profile</h1>
+                                    <p class="text-muted fs-5 mb-1">Add a profile for another person watching
+                                        Netflex.</p>
                                     <hr class="mt-0">
-                                    <div class="row">
-                                        <div class="col-md-3 col-12 image pe-md-3">
-                                            <div class="edit-icon">
-                                                <i class='fa-light fa-pen'></i>
-                                            </div>
-                                            <img class="card-img-top" src="https://picsum.photos/200/200"
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-md-3 col-12 pe-md-3 d-flex justify-content-center">
+                                            <img class="img-fluid rounded-2" :src="profile.avatar"
                                                  alt="Card image cap">
                                         </div>
-                                        <div class="col-md-9 col-12">
-                                            <input type="text" class="profile-input" placeholder="Name" maxlength="30">
-                                            <p class="text-m opacity-7 fs-5 mt-md-4">Language:</p>
-                                            <select
-                                                class="text-white profile-select"
-                                                name="choices-language"
-                                                style="max-height: 100%;"
-                                                v-model="language"
-                                            >
-                                                <option value="vi" data-select-text="Tiếng Việt">Tiếng Việt</option>
-                                                <option value="en" data-select-text="English">English</option>
-                                            </select>
-                                            <p class="opacity-7 fs-5 mt-md-4">Game Handle:</p>
-                                            <span class="fs-6 mt-md-4">Your handle is a unique name that'll be used  for playing with other Netflix members across all Netflix Games.</span>
-                                            <input type="text" class="profile-input mt-md-2" placeholder="Create Game Handle" maxlength="15">
+                                        <div class="col-md-7 col-12 mt-md-0 mt-3">
+                                            <input type="text" class="profile-input" placeholder="Name" maxlength="30" v-model="profile.name">
+                                        </div>
+                                        <div class="col-md-2 col-12 d-flex justify-content-center mt-md-0 mt-3">
+                                            <div class="form-check custom-check d-flex align-items-center">
+                                                <input
+                                                    id="is_kid"
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    name="is_kid"
+                                                    v-model="profile.is_kid"
+                                                />
+                                                <label for="is_kid" class="custom-control-label fw-normal text-white my-0 ms-1 fs-4">
+                                                    Kid?
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                     <hr>
@@ -133,8 +140,7 @@ export default {
 
 <style scoped>
 h1.title {
-    font-size: 4.5rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 0;
     color: white;
 }
@@ -165,28 +171,17 @@ h1.title {
     }
 }
 
-.image {
-    position: relative;
-    .edit-icon {
-        position: absolute;
-        top: 85%;
-        left: 20%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        color: white;
-        font-size: 1rem;
-        background-color: black;
-        padding: 3px;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+#is_kid {
+    background: #666 !important;
+    color: white !important;
+    border: 0;
+    height: 2.75rem;
+    width: 2.75rem;
+    border-radius: 0;
+    cursor: pointer;
 
-    .card-img-top {
-        border-radius: 0.25rem;
+    &:checked:after{
+        font-size: 2.25rem;
     }
 }
 
@@ -199,14 +194,6 @@ h1.title {
 
     .card-img-top {
         border-radius: 0.25rem;
-    }
-
-    .card-body {
-        .card-title {
-            font-size: 1.5rem;
-            color: white;
-            opacity: 0.5;
-        }
     }
 
     &:hover {

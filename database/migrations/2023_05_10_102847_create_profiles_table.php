@@ -16,13 +16,13 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
-            $table->string('full_name');
+            $table->string('name');
             $table->string('password')
                 ->nullable();
             $table->string('avatar')
                 ->nullable();
-            $table->boolean('adult')
-                ->default(true);
+            $table->boolean('is_kid')
+                ->default(false);
             $table->timestamps();
         });
     }

@@ -65,11 +65,11 @@ const _responseInterceptor = (response) => {
 const _errorInterceptor = (error) => {
     // if code is 401 and response have access_token
     if(error.response.status === 401 && error.response.data.access_token) {
-        Cookies.set("access_token", error.response.data.access_token, { expires: 1 });
+        Cookies.set("access_token", error.response.data.access_token);
         return client.request(error.config);
-    } else if(error.response.status === 401 && !error.response.data.access_token && location.pathname !== "/auth/login" && location.pathname !== "/auth/logout") {
-        // if code is 401 and response don't have access_token and current route is not login page
-        // then redirect to login page
+    } else if(error.response.status === 401 && !error.response.data.access_token && location.pathname !== "/auth/logout") {
+        Cookies.remove("access_token");
+        localStorage.removeItem("user");
         location.href = "/auth/login";
     }
     return Promise.reject(error);

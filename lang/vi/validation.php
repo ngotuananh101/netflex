@@ -50,7 +50,7 @@ return [
     'email' => 'Trường :attribute phải là một địa chỉ email hợp lệ.',
     'ends_with' => 'The :attribute field must end with one of the following: :values.',
     'enum' => 'The selected :attribute is invalid.',
-    'exists' => 'Trường :attribute đã chọn không hợp lệ.',
+    'exists' => ':attribute không tồn tại trong hệ thống.',
     'file' => 'The :attribute field must be a file.',
     'filled' => 'The :attribute field must have a value.',
     'gt' => [

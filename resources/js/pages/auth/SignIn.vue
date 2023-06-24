@@ -15,8 +15,8 @@
             <div class="min-vh-75">
                 <div class="container h-100">
                     <div class="row justify-content-center">
-                        <div class="col-md-5 col-12 mt-3">
-                            <div class="card border-0 mb-0 p-md-5 p-3 mx-md-5">
+                        <div class="col-xl-5 col-lg-6 col-md-7 col-12 mt-3">
+                            <div class="card border-0 mb-0 p-md-5 p-3 mx-lg-5">
                                 <div class="card-header pt-0 bg-transparent pb-0 mt-md-3">
                                     <h3 class="text-white text-start">{{ $t('auth.login.title') }}</h3>
                                 </div>
@@ -125,8 +125,11 @@ export default {
                     break;
                 case 'auth/error':
                     this.status = 'error';
-                    console.log(mutation.payload)
-                    this.$root.showSnackbar('danger', mutation.payload.response.data.message);
+                    try {
+                        this.$root.showSnackbar('danger', mutation.payload.response.data.message);
+                    } catch (e) {
+                        this.$root.showSnackbar('danger', mutation.payload.message);
+                    }
                     break;
             }
         });

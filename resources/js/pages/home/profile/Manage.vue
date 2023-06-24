@@ -38,6 +38,56 @@ export default {
             {{ this.$t('profile.done') }}
         </router-link>
     </main>
+    <div class="modal fade" id="addProfile" tabindex="-1" aria-labelledby="addProfile" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-7 col-12">
+                                <h1 class="title">Add Profile</h1>
+                                <hr class="mt-0">
+                                <div class="row">
+                                    <div class="col-md-3 col-12 image pe-md-3">
+                                        <div class="edit-icon">
+                                            <i class='fa-light fa-pen'></i>
+                                        </div>
+                                        <img class="card-img-top" src="https://picsum.photos/200/200"
+                                             alt="Card image cap">
+                                    </div>
+                                    <div class="col-md-9 col-12">
+                                        <input type="text" class="profile-input" placeholder="Name" maxlength="30">
+                                        <p class="text-m opacity-7 fs-5 mt-md-4">Language:</p>
+                                        <select
+                                            class="text-white profile-select"
+                                            name="choices-language"
+                                            style="max-height: 100%;"
+                                            v-model="language"
+                                        >
+                                            <option value="vi" data-select-text="Tiếng Việt">Tiếng Việt</option>
+                                            <option value="en" data-select-text="English">English</option>
+                                        </select>
+                                        <p class="opacity-7 fs-5 mt-md-4">Game Handle:</p>
+                                        <span class="fs-6 mt-md-4">Your handle is a unique name that'll be used  for playing with other Netflix members across all Netflix Games.</span>
+                                        <input type="text" class="profile-input mt-md-2" placeholder="Create Game Handle" maxlength="15">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="footer">
+                                    <button type="button" class="btn btn-white fs-5 fw-normal me-3">Save</button>
+                                    <button type="button" class="btn btn-black fs-5 fw-normal"
+                                            data-bs-dismiss="modal">Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style scoped>
@@ -81,12 +131,20 @@ export default {
         position: relative;
         .edit-icon {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 85%;
+            left: 20%;
             transform: translate(-50%, -50%);
             z-index: 2;
             color: white;
-            font-size: 2rem;
+            font-size: 1rem;
+            background-color: black;
+            padding: 3px;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .card-img-top {

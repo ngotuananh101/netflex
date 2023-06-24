@@ -1,5 +1,5 @@
 <template>
-    <div class="form-check">
+    <div class="form-check custom-check">
         <input
             :id="id"
             class="form-check-input"

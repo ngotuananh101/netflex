@@ -49,6 +49,10 @@ router.beforeEach((to, from, next) => {
     } else if (isGuest) {
         // Kiểm tra xem người dùng đã đăng nhập hay chưa
         if (access_token) {
+            // Nếu người dùng truy cập route login hoặc register thì chuyển hướng đến logout
+            if (to.name === 'login' || to.name === 'signup') {
+                return next({name: 'logout'});
+            }
             return next({name: 'home'});
         }
         // Nếu chưa đăng nhập thì cho phép truy cập

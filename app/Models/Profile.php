@@ -17,11 +17,11 @@ class Profile extends Model
      */
     protected $fillable = [
         'user_id',
-        'full_name',
+        'name',
         'password',
         'avatar',
         'password',
-        'adult',
+        'is_kid',
     ];
 
     /**
