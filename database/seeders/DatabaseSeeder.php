@@ -36,83 +36,103 @@ class DatabaseSeeder extends Seeder
         /**
          * Create permissions.
          */
-        // super admin permissions
-        Permission::create(['name' => 'admin']);
+        // Admin
+        Permission::create(['name' => 'admin.super']); // Super admin permission
+        Permission::create(['name' => 'admin.access']); // Access admin panel
+        Permission::create(['name' => 'admin.update']); // Update admin settings
+        Permission::create(['name' => 'admin.report']); // View report admin
 
-        // permission to access admin panel
-        Permission::create(['name' => 'admin.access']);
+        // Pages
+        Permission::create(['name' => 'pages.view']);
+        Permission::create(['name' => 'pages.create']);
+        Permission::create(['name' => 'pages.update']);
+        Permission::create(['name' => 'pages.delete']);
 
-        // common
-        Permission::create(['name' => 'roles.view']);
-        Permission::create(['name' => 'roles.create']);
-        Permission::create(['name' => 'roles.update']);
-        Permission::create(['name' => 'roles.delete']);
+        // Invoices
+        Permission::create(['name' => 'invoices.view']);
 
-        Permission::create(['name' => 'custom_pages.view']);
-        Permission::create(['name' => 'custom_pages.create']);
-        Permission::create(['name' => 'custom_pages.update']);
-        Permission::create(['name' => 'custom_pages.delete']);
+        // News
+        Permission::create(['name' => 'news.view']);
+        Permission::create(['name' => 'news.create']);
+        Permission::create(['name' => 'news.update']);
+        Permission::create(['name' => 'news.delete']);
 
-        Permission::create(['name' => 'users.view']);
-        Permission::create(['name' => 'users.create']);
-        Permission::create(['name' => 'users.update']);
-        Permission::create(['name' => 'users.delete']);
+        // People
+        Permission::create(['name' => 'people.view']);
+        Permission::create(['name' => 'people.create']);
+        Permission::create(['name' => 'people.update']);
+        Permission::create(['name' => 'people.delete']);
 
-        Permission::create(['name' => 'profiles.view']);
-        Permission::create(['name' => 'profiles.create']);
-        Permission::create(['name' => 'profiles.update']);
-        Permission::create(['name' => 'profiles.delete']);
-
-        Permission::create(['name' => 'settings.view']);
-        Permission::create(['name' => 'settings.update']);
-
+        // Plans
         Permission::create(['name' => 'plans.view']);
         Permission::create(['name' => 'plans.create']);
         Permission::create(['name' => 'plans.update']);
         Permission::create(['name' => 'plans.delete']);
 
-        Permission::create(['name' => 'subscriptions.view']);
-        Permission::create(['name' => 'subscriptions.create']);
-        Permission::create(['name' => 'subscriptions.update']);
-        Permission::create(['name' => 'subscriptions.delete']);
+        // Reviews
+        Permission::create(['name' => 'reviews.view']);
+        Permission::create(['name' => 'reviews.create']);
+        Permission::create(['name' => 'reviews.update']);
+        Permission::create(['name' => 'reviews.delete']);
 
-        Permission::create(['name' => 'invoices.view']);
-        Permission::create(['name' => 'invoices.create']);
-        Permission::create(['name' => 'invoices.update']);
-        Permission::create(['name' => 'invoices.delete']);
+        // Roles
+        Permission::create(['name' => 'roles.view']);
+        Permission::create(['name' => 'roles.create']);
+        Permission::create(['name' => 'roles.update']);
+        Permission::create(['name' => 'roles.delete']);
 
-        Permission::create(['name' => 'payments.view']);
-        Permission::create(['name' => 'payments.create']);
-        Permission::create(['name' => 'payments.update']);
-        Permission::create(['name' => 'payments.delete']);
+        // Settings
+        Permission::create(['name' => 'settings.view']);
+        Permission::create(['name' => 'settings.update']);
 
+        // Tags
         Permission::create(['name' => 'tags.view']);
         Permission::create(['name' => 'tags.create']);
         Permission::create(['name' => 'tags.update']);
         Permission::create(['name' => 'tags.delete']);
 
+        // Titles
         Permission::create(['name' => 'titles.view']);
         Permission::create(['name' => 'titles.create']);
         Permission::create(['name' => 'titles.update']);
         Permission::create(['name' => 'titles.delete']);
 
-        Permission::create(['name' => 'genres.view']);
-        Permission::create(['name' => 'genres.create']);
-        Permission::create(['name' => 'genres.update']);
-        Permission::create(['name' => 'genres.delete']);
+        // Users
+        Permission::create(['name' => 'users.view']);
+        Permission::create(['name' => 'users.create']);
+        Permission::create(['name' => 'users.update']);
+        Permission::create(['name' => 'users.delete']);
 
-        Permission::create(['name' => 'videos.rate']);
+        // Videos
         Permission::create(['name' => 'videos.view']);
         Permission::create(['name' => 'videos.create']);
         Permission::create(['name' => 'videos.update']);
         Permission::create(['name' => 'videos.delete']);
+        Permission::create(['name' => 'videos.rate']);
+        Permission::create(['name' => 'videos.play']);
 
-        // Seed roles
-        $superAdminRole = Role::create(['name' => 'super-admin']);
-        $superAdminRole->givePermissionTo(Permission::where('name', 'admin')->get());
+        /**
+         * Create permissions.
+         */
+        // Admin
+        $admin = Role::create(['name' => 'admin']);
+        $admin->givePermissionTo('admin.super');
 
-        $userRole = Role::create(['name' => 'user']);
-        $userRole->givePermissionTo(Permission::where('name', 'videos.rate')->get());
+        // User
+        $user = Role::create(['name' => 'user', 'default' => true]);
+        $user->givePermissionTo('pages.view');
+        $user->givePermissionTo('invoices.view');
+        $user->givePermissionTo('news.view');
+        $user->givePermissionTo('people.view');
+        $user->givePermissionTo('plans.view');
+        $user->givePermissionTo('reviews.view');
+        $user->givePermissionTo('settings.view');
+        $user->givePermissionTo('tags.view');
+        $user->givePermissionTo('titles.view');
+        $user->givePermissionTo('users.view');
+        $user->givePermissionTo('videos.view');
+        $user->givePermissionTo('videos.rate');
+        $user->givePermissionTo('videos.play');
     }
 
     /**

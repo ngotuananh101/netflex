@@ -12,6 +12,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
@@ -51,7 +52,12 @@ class AuthController extends Controller
                 'status' => 'pending',
             ]);
             // emit event
-//            event(new Registered($user));
+            event(new Registered($user));
+            // Get default role
+            $role = Role::where('default', 1)->first();
+            // assign role to user
+            $user->assignRole($role);
+            // set expires at of token
             $expiresAt = Carbon::now()->addHour(6);
             // return response
             return response()->json([

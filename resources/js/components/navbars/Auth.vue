@@ -20,7 +20,10 @@ export default {
         };
     },
     mounted() {
-        this.language = this.$root.language;
+        this.language = this.$i18next.language;
+        this.$i18next.on('languageChanged', (newLanguage) => {
+            this.language = newLanguage;
+        });
     },
     methods: {
         changeLanguage(e) {

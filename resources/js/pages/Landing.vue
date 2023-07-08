@@ -210,13 +210,10 @@ export default {
         };
     },
     created() {
-        this.$store.state.hideConfigButton = true;
-        this.toggleDefaultLayout();
-        this.language = this.$root.language;
-    },
-    beforeUnmount() {
-        this.$store.state.hideConfigButton = false;
-        this.toggleDefaultLayout();
+        this.language = this.$i18next.language;
+        this.$i18next.on('languageChanged', (newLanguage) => {
+            this.language = newLanguage;
+        });
     },
     methods: {
         ...mapMutations({

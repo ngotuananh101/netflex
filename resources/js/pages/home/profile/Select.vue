@@ -94,19 +94,18 @@ export default {
                         <div class="container">
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-md-7 col-12">
-                                    <h1 class="title fs-1">Add Profile</h1>
-                                    <p class="text-muted fs-5 mb-1">Add a profile for another person watching
-                                        Netflex.</p>
+                                    <h1 class="title fs-1">{{ this.$t('profile.add_profile') }}</h1>
+                                    <p class="text-muted fs-5 mb-1">{{ this.$t('profile.add_description') }}</p>
                                     <hr class="mt-0">
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-md-3 col-12 pe-md-3 d-flex justify-content-center">
                                             <img class="img-fluid rounded-2" :src="profile.avatar"
                                                  alt="Card image cap">
                                         </div>
-                                        <div class="col-md-7 col-12 mt-md-0 mt-3">
-                                            <input type="text" class="profile-input" placeholder="Name" maxlength="30" v-model="profile.name">
+                                        <div class="col-md-6 col-12 mt-md-0 mt-3">
+                                            <input type="text" class="profile-input" :placeholder="this.$t('profile.name')" maxlength="30" v-model="profile.name">
                                         </div>
-                                        <div class="col-md-2 col-12 d-flex justify-content-center mt-md-0 mt-3">
+                                        <div class="col-md-3 col-12 d-flex justify-content-center mt-md-0 mt-3">
                                             <div class="form-check custom-check d-flex align-items-center">
                                                 <input
                                                     id="is_kid"
@@ -116,16 +115,16 @@ export default {
                                                     v-model="profile.is_kid"
                                                 />
                                                 <label for="is_kid" class="custom-control-label fw-normal text-white my-0 ms-1 fs-4">
-                                                    Kid?
+                                                    {{ this.$t('profile.kid') }}?
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="footer">
-                                        <button type="button" class="btn btn-white fs-5 fw-normal me-3">Save</button>
+                                        <button type="button" class="btn btn-white fs-5 fw-normal me-3">{{ this.$t('profile.save') }}</button>
                                         <button type="button" class="btn btn-black fs-5 fw-normal"
-                                                data-bs-dismiss="modal">Cancel
+                                                data-bs-dismiss="modal">{{ this.$t('profile.cancel') }}
                                         </button>
                                     </div>
                                 </div>

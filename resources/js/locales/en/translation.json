@@ -228,6 +228,12 @@
         "who_watching": "Who's Watching?",
         "manage_profile": "Manage Profiles",
         "add_profile": "Add Profile",
-        "done": "Done"
+        "done": "Done",
+        "add": "Add Profile",
+        "add_description": "Add a profile for another person watching Netflex.",
+        "name": "Name",
+        "kid" : "Kid",
+        "save" : "Save",
+        "cancel" : "Cancel"
     }
 }

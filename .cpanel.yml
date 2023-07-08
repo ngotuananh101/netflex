@@ -1,0 +1,13 @@
+# Auto deploy to cPanel
+deploy:
+  tasks:
+    - export DEPLOY_PATH=/home/pjkgvs3n0bxh/pjkgvs3n0bxh    # Đường dẫn nơi tệp sẽ được triển khai đến
+    - /bin/cp -R * $DEPLOY_PATH                     # Sao chép tất cả các tệp sang đường dẫn triển khai
+    - /bin/chmod -R 755 $DEPLOY_PATH                   # Cấp quyền thực thi cho các tệp triển khai
+    - /bin/chown -R pjkgvs3n0bxh:pjkgvs3n0bxh $DEPLOY_PATH      # Gán quyền sở hữu cho người dùng và nhóm người dùng
+
+install_dependencies:
+  tasks:
+    - /usr/bin/composer install                        # Cài đặt các phụ thuộc từ tệp composer.json
+    - /usr/local/bin/npm install                     # Cài đặt các phụ thuộc từ tệp package.json
+    - /usr/local/bin/npm run build                 # Biên dịch tệp CSS và JS

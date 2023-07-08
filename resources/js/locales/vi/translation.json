@@ -230,6 +230,12 @@
         "who_watching": "Ai đang xem?",
         "manage_profile": "Quản lý hồ sơ",
         "add_profile": "Thêm hồ sơ",
-        "done": "Xong"
+        "done": "Xong",
+        "add": "Thêm hồ sơ",
+        "add_description": "Tạo hồ sơ cho mỗi người trong gia đình của bạn.",
+        "name": "Tên",
+        "kid" : "Trẻ em",
+        "save" : "Lưu",
+        "cancel" : "Hủy"
     }
 }
