@@ -1,5 +1,5 @@
 # Auto deploy to cPanel
-deploy:
+deployment:
   tasks:
     - export DEPLOY_PATH=/home/pjkgvs3n0bxh/nf.anhnt.id.vn    # Đường dẫn nơi tệp sẽ được triển khai đến
     - /bin/cp -R * $DEPLOY_PATH                     # Sao chép tất cả các tệp sang đường dẫn triển khai
