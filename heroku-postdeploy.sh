@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-heroku run php artisan storage:link -a netflex
+php artisan storage:link
