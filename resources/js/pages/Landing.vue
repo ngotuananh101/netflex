@@ -25,20 +25,22 @@
                     <h5 class="col-12 text-white text-center mt-4">
                         {{ $t('landing.subtitle2') }}
                     </h5>
-                    <div class="col-md-8 col-12 row justify-content-center">
-                        <div class="col-lg-9 col-12 mt-3">
+                    <div class="col-md-7 col-10 mt-3 row justify-content-center align-items-center">
+                        <div class="col-xl-8 col-lg-10 col-12">
                             <input
-                                class="form-control fs-4 p-3 text-white"
+                                class="form-control fs-5 p-3 text-white"
                                 v-model="email"
                                 type="email"
                                 :placeholder="$t('landing.input')"
                             />
                         </div>
-                        <router-link :to="{ name: 'signup', query: { email: email } }"
-                            class="btn btn-danger col-lg-3 col-8 fs-4 mb-0 mt-3 d-flex justify-content-center align-items-center"
-                        >
-                            {{ $t('landing.button2') }} <i class="fa-solid fa-chevron-right"></i>
-                        </router-link>
+                        <div class="col-xl-3 col-lg-5 col-8 px-0">
+                            <router-link :to="{ name: 'signup', query: { email: email } }"
+                                         class="btn btn-danger fs-6 p-3 mb-0 mt-3 mt-xl-0 d-flex justify-content-center align-items-center"
+                            >
+                                {{ $t('landing.button2') }} <i class="fa-solid fa-chevron-right"></i>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,18 +145,22 @@
                 <h5 class="col-12 text-white text-center mt-4">
                     {{ $t('landing.subtitle2') }}
                 </h5>
-                <div class="col-md-8 col-12 row justify-content-center">
-                    <div class="col-lg-9 col-12 mt-3">
+                <div class="col-md-8 col-10 mt-3 row justify-content-center align-items-center">
+                    <div class="col-xl-8 col-lg-10 col-12">
                         <input
-                            class="form-control fs-4 p-3 text-white"
+                            class="form-control fs-5 p-3 text-white"
                             v-model="email"
                             type="email"
                             :placeholder="$t('landing.input')"
                         />
                     </div>
-                    <router-link :to="{ name: 'signup', query: { email: email } }" class="btn btn-danger col-lg-3 col-8 fs-4 mb-0 mt-3 d-flex justify-content-center align-items-center">
-                        {{ $t('landing.button2') }} <i class="fa-solid fa-chevron-right"></i>
-                    </router-link>
+                    <div class="col-xl-3 col-lg-5 col-8 px-0">
+                        <router-link :to="{ name: 'signup', query: { email: email } }"
+                                     class="btn btn-danger fs-6 p-3 mb-0 mt-3 mt-xl-0 d-flex justify-content-center align-items-center"
+                        >
+                            {{ $t('landing.button2') }} <i class="fa-solid fa-chevron-right"></i>
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -237,7 +243,8 @@ input {
 
 input:focus {
     background-color: rgba(0, 0, 0, 0.6);
-    border: 2px solid #f44336;
+    //border: 2px solid #f44336;
+    border: none;
     box-shadow: 0 0 0 0.3rem rgba(255, 255, 255, 0.5);
 }
 
