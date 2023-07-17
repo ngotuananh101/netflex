@@ -12,7 +12,7 @@ export default {
     data() {
         return {
             profiles: [],
-            avatar: [],
+            avatars: [],
             status: 'loading',
             unsubscribe: null,
             addProfileModal: null,
@@ -28,13 +28,10 @@ export default {
         init() {
             let bootstrap = this.$store.state.config.bootstrap;
             this.addProfileModal = new bootstrap.Modal(document.getElementById('addProfile'));
-            let imageList = this.$store.state.homeProfile.images;
-            imageList.map((image) => {
-                this.avatar.push('/storage/images/avatars/' + image);
-            });
+            this.avatars = this.$store.state.homeProfile.images;
             // set random avatars when addProfileModal is shown
             this.addProfileModal._element.addEventListener('shown.bs.modal', () => {
-                this.profile.avatar = this.avatar[Math.floor(Math.random() * this.avatar.length)];
+                this.profile.avatar = this.avatars[Math.floor(Math.random() * this.avatar.length)];
             });
         },
         addProfile() {
@@ -66,6 +63,7 @@ export default {
             }
         });
         this.$store.dispatch('homeProfile/getProfiles');
+
     },
     beforeUnmount() {
         this.unsubscribe();
