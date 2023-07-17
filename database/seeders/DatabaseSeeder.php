@@ -143,6 +143,7 @@ class DatabaseSeeder extends Seeder
         // Seed plans
         $plans = [
             [
+                'id' => 1, // Free plan
                 'name' => 'Free',
                 'price' => 0,
                 'interval' => 'month',
@@ -161,6 +162,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 2, // Premium plan
                 'name' => 'Premium',
                 'price' => 9.99,
                 'interval' => 'month',
