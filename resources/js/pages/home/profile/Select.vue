@@ -99,7 +99,7 @@ export default {
                         </div>
                     </div>
                     <div class="card p-3 col-md-2 col-5" v-if="profiles_size <= 4" @click="this.addProfileModal.show()">
-                        <img class="card-img-top" src="../../../../../storage/app/public/images/avatars/add-profile.png" alt="Card image cap">
+                        <img class="card-img-top" src="/storage/images/avatars/add-profile.png" alt="Card image cap">
                         <div class="card-body p-2">
                             <p class="card-title text-center fs-4 text-white opacity-5">{{ this.$t('profile.add_profile') }}</p>
                         </div>
