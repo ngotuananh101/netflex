@@ -5,6 +5,7 @@ export default {
     namespaced: true,
     state: {
         profiles: [],
+        images: [],
         status: null
     },
     getters: {
@@ -16,7 +17,12 @@ export default {
         request(state) {
             state.status = "loading";
         },
-        getProfileSuccess(state, profiles) {
+        getProfileSuccess(state,{profiles, images}) {
+            state.status = "success";
+            state.profiles = profiles;
+            state.images = images;
+        },
+        addProfileSuccess(state, profiles) {
             state.status = "success";
             state.profiles = profiles;
         },
@@ -29,7 +35,16 @@ export default {
             commit("request");
             try {
                 let profiles = await profileService.getProfiles();
-                commit("getProfileSuccess", profiles.data.data);
+                commit("getProfileSuccess", {profiles: profiles.data.data, images: profiles.data.images});
+            } catch (error) {
+                commit("error", error);
+            }
+        },
+        async addProfile({ commit }, profile) {
+            commit("request");
+            try {
+                let response = await profileService.addProfile(profile);
+                commit("addProfileSuccess", response.data.data);
             } catch (error) {
                 commit("error", error);
             }

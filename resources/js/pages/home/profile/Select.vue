@@ -12,14 +12,15 @@ export default {
     data() {
         return {
             profiles: [],
+            avatar: [],
             status: 'loading',
             unsubscribe: null,
             addProfileModal: null,
             language: this.$root.language,
             profile: {
-                avatar: 'https://picsum.photos/200/200',
+                avatar: '',
                 name: '',
-                is_kid: false
+                is_kid: true
             }
         };
     },
@@ -27,6 +28,17 @@ export default {
         init() {
             let bootstrap = this.$store.state.config.bootstrap;
             this.addProfileModal = new bootstrap.Modal(document.getElementById('addProfile'));
+            let imageList = this.$store.state.homeProfile.images;
+            imageList.map((image) => {
+                this.avatar.push('/storage/images/avatars/' + image);
+            });
+            // set random avatars when addProfileModal is shown
+            this.addProfileModal._element.addEventListener('shown.bs.modal', () => {
+                this.profile.avatar = this.avatar[Math.floor(Math.random() * this.avatar.length)];
+            });
+        },
+        addProfile() {
+            this.$store.dispatch('homeProfile/addProfile', this.profile);
         }
     },
     created() {
@@ -35,8 +47,22 @@ export default {
             switch (mutation.type) {
                 case 'homeProfile/getProfileSuccess':
                     this.status = 'success';
-                    this.profiles = payload;
+                    this.profiles = payload.profiles;
                     this.init();
+                    break;
+                case 'homeProfile/addProfileSuccess':
+                    this.profiles = payload;
+                    this.addProfileModal.hide();
+                    break;
+                case 'homeProfile/error':
+                    let message = '';
+                    try {
+                        message = payload.response.data.message;
+                    } catch (e) {
+                        message = payload.message;
+                    }
+                    this.$root.showSnackbar('danger', message);
+                    break;
             }
         });
         this.$store.dispatch('homeProfile/getProfiles');
@@ -67,13 +93,13 @@ export default {
             <div class="container mx-md-5">
                 <div id="profile-list" class="mt-3 row">
                     <div class="card p-3 col-md-2 col-5" v-for="profile in profiles">
-                        <img class="card-img-top" src="https://picsum.photos/200/200" alt="Card image cap">
+                        <img class="card-img-top" :src="profile.avatar" alt="Card image cap">
                         <div class="card-body p-2">
-                            <p class="card-title text-center">Card title</p>
+                            <p class="card-title text-center fs-4 text-white opacity-5">{{ profile.name }}</p>
                         </div>
                     </div>
-                    <div class="card p-3 col-md-2 col-5" v-if="profiles_size < 5" @click="this.addProfileModal.show()">
-                        <img class="card-img-top" src="../../../assets/img/avatar/add-profile.png" alt="Card image cap">
+                    <div class="card p-3 col-md-2 col-5" v-if="profiles_size <= 4" @click="this.addProfileModal.show()">
+                        <img class="card-img-top" src="../../../../../storage/app/public/images/avatars/add-profile.png" alt="Card image cap">
                         <div class="card-body p-2">
                             <p class="card-title text-center fs-4 text-white opacity-5">{{ this.$t('profile.add_profile') }}</p>
                         </div>
@@ -122,7 +148,7 @@ export default {
                                     </div>
                                     <hr>
                                     <div class="footer">
-                                        <button type="button" class="btn btn-white fs-5 fw-normal me-3">{{ this.$t('profile.save') }}</button>
+                                        <button type="button" class="btn btn-white fs-5 fw-normal me-3" @click="addProfile">{{ this.$t('profile.save') }}</button>
                                         <button type="button" class="btn btn-black fs-5 fw-normal"
                                                 data-bs-dismiss="modal">{{ this.$t('profile.cancel') }}
                                         </button>

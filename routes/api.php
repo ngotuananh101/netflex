@@ -30,5 +30,5 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('verify/{id}/{hash}', [AuthController::class, 'verify']); //->middleware(['signed']); // uncomment this line if you want to use signed url
         Route::post('logout', [AuthController::class, 'logout']);
     });
-    Route::resource('profile' , ProfileController::class)->only(['index', 'update', 'destroy', 'create']);
+    Route::resource('profile' , ProfileController::class)->only(['index', 'store']);
 });
