@@ -216,9 +216,6 @@ export default {
         });
     },
     methods: {
-        ...mapMutations({
-            toggleDefaultLayout: "config/toggleDefaultLayout",
-        }),
         changeLanguage(e) {
             this.$root.changeLanguage(e.target.value);
         },
