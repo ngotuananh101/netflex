@@ -46,6 +46,10 @@ export default {
     color: black !important;
 }
 
+.form-check-input:checked {
+    background: rgb(118, 118, 118);
+}
+
 label {
     color: #b3b3b3;
 }
