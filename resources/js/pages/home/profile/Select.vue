@@ -31,7 +31,7 @@ export default {
             this.avatars = this.$store.state.homeProfile.images;
             // set random avatars when addProfileModal is shown
             this.addProfileModal._element.addEventListener('shown.bs.modal', () => {
-                this.profile.avatar = this.avatars[Math.floor(Math.random() * this.avatar.length)];
+                this.profile.avatar = this.avatars[Math.floor(Math.random() * this.avatars.length)];
             });
         },
         addProfile() {
